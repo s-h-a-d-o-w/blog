@@ -14,17 +14,6 @@
   --primary-color: #548e9b;
 }
 
-html {
-  overflow-y: scroll;
-}
-
-@supports (scrollbar-gutter: stable) {
-  html {
-    overflow-y: auto;
-    scrollbar-gutter: stable;
-  }
-}
-
 *,
 *:before,
 *:after {
@@ -32,6 +21,11 @@ html {
 }
 
 body {
+  /* I don't know why the content doesn't expand to the full width on mobile but have no time to figure it out. All I wanted to do was to quickly use this template. */
+  /* position: fixed;
+  left: 0;
+  right: 0; */
+
   margin: 0;
   font-family: var(--font-family-serif);
   font-size: 16px;
@@ -194,17 +188,19 @@ table {
 }
 
 th {
+  word-break: break-word;
   border-bottom: 2px solid #cccccc;
   padding: 0.4em 0.8em;
 }
 
 td {
+  word-break: break-word;
   padding: 0.4em 0.8em;
 }
 
-.container {
+.article-container {
   margin: 0 auto;
-  max-width: 42em;
+  max-width: 40rem;
   width: 100%;
 }
 
@@ -217,10 +213,8 @@ td {
   display: inline-flex;
   align-items: center;
   height: 100%;
-  padding: 0.33em 0.67em;
-  padding-top: 8px;
-  margin-left: 10px;
-  gap: 0.6em;
+  /* padding: 0.33em 0.67em; */
+  gap: 1em;
   border-radius: 99em;
   background-color: var(--theme-code-inline-bg);
 }

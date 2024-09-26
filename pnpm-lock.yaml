@@ -20,9 +20,6 @@ importers:
       astro:
         specifier: ^4.0.1
         version: 4.15.9(rollup@4.22.4)(typescript@5.6.2)
-      reading-time:
-        specifier: ^1.5.0
-        version: 1.5.0
       rehype-external-links:
         specifier: ^3.0.0
         version: 3.0.0
@@ -1612,9 +1609,6 @@ packages:
   readdirp@3.6.0:
     resolution: {integrity: sha512-hOS089on8RduqdbhvQ5Z37A0ESjsqz6qnRcffsMU3495FuTdqSm+7bhJ29JvIOsBDEEnan5DPu9t3To9VRlMzA==}
     engines: {node: '>=8.10.0'}
-
-  reading-time@1.5.0:
-    resolution: {integrity: sha512-onYyVhBNr4CmAxFsKS7bz+uTLRakypIe4R+5A824vBSkQy/hB3fZepoVEf8OVAxzLvK+H/jm9TzpI3ETSm64Kg==}
 
   regex@4.3.2:
     resolution: {integrity: sha512-kK/AA3A9K6q2js89+VMymcboLOlF5lZRCYJv3gzszXFHBr6kO6qLGzbm+UIugBEV8SMMKCTR59txoY6ctRHYVw==}
@@ -4212,8 +4206,6 @@ snapshots:
   readdirp@3.6.0:
     dependencies:
       picomatch: 2.3.1
-
-  reading-time@1.5.0: {}
 
   regex@4.3.2: {}
 

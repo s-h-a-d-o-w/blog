@@ -1,29 +1,31 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import Bio from '../../components/Bio.astro';
-import getPostData from '../../utils/getPostData';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Bio from '../components/Bio.astro';
+import type { MarkdownInstance } from 'astro';
 
 export async function getStaticPaths() {
-  const posts = await Astro.glob('../../data/blog-posts/*.md');
-  return posts.map(p => ({
-    params: { slug: p.file.split('/').pop().split('.').shift() },
-    props: { post: p },
-  }));
+  const posts = (await Astro.glob('../data/blog-posts/*.md')) as MarkdownInstance<Record<string, any>>[];
+  return posts.map(p => {
+    const slug =p.file.split('/').pop()?.split('.').shift()
+    return {
+    params: { slug },
+    props: { post: p, slug },
+  }});
 }
 
 const { Content, frontmatter } = Astro.props.post;
 const { title, description, publishDate } = frontmatter;
-const { slug, readingTime } = getPostData(Astro.props.post);
-const permalink = `${Astro.site.href}blog/${slug}`;
+const slug = Astro.props.slug
+const permalink = `${Astro.site?.href}${slug}`;
 ---
 
-<BaseLayout title={title} description={description} permalink={permalink} current="blog">
+<BaseLayout title={title} description={description} permalink={permalink}>
   <header>
-    <p>{publishDate} ~ {readingTime}</p>
+    <p>{publishDate}</p>
     <h1>{title}</h1>
     <hr />
   </header>
-  <div class="container">
+  <div class="article-container">
     <article class="content">
       <Content />
     </article>

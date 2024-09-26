@@ -2,7 +2,7 @@
 import Logo from './Logo.astro'
 import Nav from './Nav.astro'
 
-const { current = '' } = Astro.props;
+const { isRoot } = Astro.props
 ---
 
 <style>
@@ -10,12 +10,18 @@ const { current = '' } = Astro.props;
     display: flex;
     margin: 0 auto;
     max-width: 1400px;
-    padding: 2em;
+    padding: 1em 1.5em 0 1.5em;
     width: 100%;
+  }
+
+  a {
+    text-decoration: none;
   }
 </style>
 
 <header>
-  <Logo />
-  <Nav current={current} />
+  {!isRoot && <a href="/">
+    <Logo />
+  </a>}
+  <Nav />
 </header>

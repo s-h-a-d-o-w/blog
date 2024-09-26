@@ -1,7 +1,7 @@
 <script>
   const rootEl = typeof document !== 'undefined' ? document.documentElement : null;
   const themes = ['light', 'dark'];
-  let theme = ''
+  let theme = 'light'
 
   if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
     theme = localStorage.getItem('theme');
