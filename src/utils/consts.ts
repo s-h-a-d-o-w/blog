@@ -1,0 +1,1 @@
+export const NUM_CHARACTERS_DESCRIPTION = 400

@@ -1,11 +1,15 @@
 ---
+import type { MarkdownInstance } from 'astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import type { FrontMatter } from '../types';
+import { truncateHtml } from '../utils/truncateHtml'
+import { NUM_CHARACTERS_DESCRIPTION } from '../utils/consts';
 
 const title = "Andreas Opferkuch's blog";
 const description = 'Thoughts mostly on frontend technology and TypeScript.';
 const permalink = `${Astro.site?.href}`;
 
-let allPosts = await Astro.glob('../../posts/*.md');
+let allPosts = await Astro.glob('../../posts/*.md') as MarkdownInstance<FrontMatter>[];
 allPosts = allPosts.sort((a, b) => new Date(b.frontmatter.publishDate).valueOf() - new Date(a.frontmatter.publishDate).valueOf());
 ---
 
@@ -13,6 +17,7 @@ allPosts = allPosts.sort((a, b) => new Date(b.frontmatter.publishDate).valueOf()
   <div class="article-container">
     {allPosts.map((post, index) => {
       const href = `/${post.file.split('/').pop()?.split('.').shift()}`;
+
       return (
         <div>
           { index !== 0 && <hr /> }
@@ -20,9 +25,9 @@ allPosts = allPosts.sort((a, b) => new Date(b.frontmatter.publishDate).valueOf()
             <h2>
               <a href={href}>{post.frontmatter.title}</a>
             </h2>
-            <p>{post.frontmatter.description}</p>
+            <div set:html={truncateHtml(post.compiledContent().slice(0, NUM_CHARACTERS_DESCRIPTION))} />
             <div class="post-item-footer">
-              <span class="post-item-date">— {post.frontmatter.publishDate}</span>
+              <span class="post-item-date">— {new Date(post.frontmatter.publishDate).toLocaleDateString()}</span>
             </div>
           </div>
         </div>

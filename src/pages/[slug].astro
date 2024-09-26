@@ -2,6 +2,8 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Bio from '../components/Bio.astro';
 import type { MarkdownInstance } from 'astro';
+import { truncateHtml } from '../utils/truncateHtml';
+import { NUM_CHARACTERS_DESCRIPTION } from '../utils/consts';
 
 export async function getStaticPaths() {
   const posts = (await Astro.glob('../../posts/*.md')) as MarkdownInstance<Record<string, any>>[];
@@ -13,15 +15,16 @@ export async function getStaticPaths() {
   }});
 }
 
-const { Content, frontmatter } = Astro.props.post;
-const { title, description, publishDate } = frontmatter;
+const { Content, frontmatter, compiledContent } = Astro.props.post;
+const { title,  publishDate } = frontmatter;
+const description = truncateHtml(compiledContent().slice(0, NUM_CHARACTERS_DESCRIPTION))
 const slug = Astro.props.slug
 const permalink = `${Astro.site?.href}${slug}`;
 ---
 
 <BaseLayout title={title} description={description} permalink={permalink}>
   <header>
-    <p>{publishDate}</p>
+    <p>{new Date(publishDate).toLocaleDateString()}</p>
     <h1>{title}</h1>
     <hr />
   </header>
@@ -37,6 +40,7 @@ const permalink = `${Astro.site?.href}${slug}`;
 <style>
   header {
     text-align: center;
+    max-width: 50rem;
   }
 
   header h1 {
