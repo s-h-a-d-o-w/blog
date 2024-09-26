@@ -4,7 +4,7 @@ import Bio from '../components/Bio.astro';
 import type { MarkdownInstance } from 'astro';
 
 export async function getStaticPaths() {
-  const posts = (await Astro.glob('../data/blog-posts/*.md')) as MarkdownInstance<Record<string, any>>[];
+  const posts = (await Astro.glob('../../posts/*.md')) as MarkdownInstance<Record<string, any>>[];
   return posts.map(p => {
     const slug =p.file.split('/').pop()?.split('.').shift()
     return {
