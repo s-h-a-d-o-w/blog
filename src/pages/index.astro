@@ -5,8 +5,8 @@ import type { FrontMatter } from '../types';
 import { truncateHtml } from '../utils/truncateHtml'
 import { NUM_CHARACTERS_DESCRIPTION } from '../utils/consts';
 
-const title = "Andreas Opferkuch's Tech Blog";
-const description = 'Thoughts mostly on frontend technology and TypeScript.';
+const title = "Frontend, TS and Stuff";
+const description = "Andreas Opferkuch's thoughts mostly on frontend technology and TypeScript.";
 const permalink = `${Astro.site?.href}`;
 
 let allPosts = await Astro.glob('../../posts/*.md') as MarkdownInstance<FrontMatter>[];

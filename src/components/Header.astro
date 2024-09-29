@@ -25,11 +25,39 @@ const { isRoot } = Astro.props
   a {
     text-decoration: none;
   }
+
+  img {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 2rem;
+    display: block;
+    margin-right: 1rem;
+  }
+
+  .alignment {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.3rem;
+
+    margin: 1em 0 2em 0;
+  }
+
+  .subtitle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    font-size: 0.9rem;
+  }
 </style>
 
 <!-- prettier doesn't seem to work with astro -->
 <header class={isRoot?"center": "left"}>
-  {isRoot ? <h1 style={{fontSize: "2.5em", margin: "1em 0 1.5em 0"}}>Andreas Opferkuch's Tech Blog</h1> : <a href="/">
+  {isRoot ? <div class="alignment">
+    <h1 style={{fontSize: "2.5em", margin: "0"}}>Frontend, TS and Stuff</h1>
+    <div class="subtitle">Infrequent, irregular thoughts by <a href="https://github.com/s-h-a-d-o-w" target="_blank"><img src="https://avatars.githubusercontent.com/u/16936908?v=4" alt="Headshot of Andreas Opferkuch"></a></div>
+  </div> : <a href="/">
     <BackButton />
   </a>}
   <Nav />
