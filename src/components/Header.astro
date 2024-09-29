@@ -34,13 +34,16 @@ const { isRoot } = Astro.props
     margin-right: 1rem;
   }
 
-  .alignment {
+  .title {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     gap: 0.3rem;
 
     margin: 1em 0 2em 0;
+    @media (max-width: 680px) {
+      margin: 3.5em 0 2em 0;
+    }
   }
 
   .subtitle {
@@ -54,7 +57,7 @@ const { isRoot } = Astro.props
 
 <!-- prettier doesn't seem to work with astro -->
 <header class={isRoot?"center": "left"}>
-  {isRoot ? <div class="alignment">
+  {isRoot ? <div class="title">
     <h1 style={{fontSize: "2.5em", margin: "0"}}>Frontend, TS and Stuff</h1>
     <div class="subtitle">Infrequent, irregular thoughts by <a href="https://github.com/s-h-a-d-o-w" target="_blank"><img src="https://avatars.githubusercontent.com/u/16936908?v=4" alt="Headshot of Andreas Opferkuch"></a></div>
   </div> : <a href="/">
