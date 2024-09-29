@@ -1,5 +1,5 @@
 ---
-import Logo from './Logo.astro'
+import BackButton from './BackButton.astro'
 import Nav from './Nav.astro'
 
 const { isRoot } = Astro.props
@@ -14,14 +14,23 @@ const { isRoot } = Astro.props
     width: 100%;
   }
 
+  header.left {
+    justify-content: flex-start;
+  }
+  
+  header.center {
+    justify-content: center;
+  }
+
   a {
     text-decoration: none;
   }
 </style>
 
-<header>
-  {!isRoot && <a href="/">
-    <Logo />
+<!-- prettier doesn't seem to work with astro -->
+<header class={isRoot?"center": "left"}>
+  {isRoot ? <h1 style={{fontSize: "2.5em", margin: "1em 0 1.5em 0"}}>Andreas Opferkuch's Tech Blog</h1> : <a href="/">
+    <BackButton />
   </a>}
   <Nav />
 </header>
