@@ -7,6 +7,7 @@
   --primary-color: #d35cdb;
   --font-family-serif: Merriweather, serif;
   --font-family-sans: 'Fira Sans', sans-serif;
+  --font-family-mono: 'SF Mono', menlo, inconsolata, monospace;
 }
 
 :root.theme-dark {
@@ -130,7 +131,7 @@ p > code {
 }
 
 code {
-  font-family: 'SF Mono', menlo, inconsolata, monospace;
+  font-family: var(--font-family-mono);
   font-size: calc(1em - 2px);
   color: var(--text-code);
   padding: 0.2em 0.2em;
@@ -289,6 +290,27 @@ input[name='theme-toggle'] {
     font-size: 1rem;
     margin: 1em 0;
   }
+}
+
+.copy-code {
+  position: absolute;
+  top: 0.5em;
+  right: 0.5em;
+  background-color: var(--code-background);
+  padding: 0.35em 0.5em;
+  font-size: 1em;
+  line-height: 1em;
+
+  font-family: var(--font-family-mono);
+  color: var(--text-code);
+
+  border: none;
+  border-radius: 0.25em;
+  cursor: pointer;
+}
+
+.copy-code:hover {
+  background-color: var(--primary-color);
 }
 
 :root.theme-dark .astro-code,
