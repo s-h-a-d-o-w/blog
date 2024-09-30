@@ -8,6 +8,14 @@ import rehypeExternalLinks from 'rehype-external-links'
 
 // https://astro.build/config
 export default defineConfig({
+  vite: {
+    server: {
+      host: true,
+      watch: {
+        usePolling: true,
+      },
+    },
+  },
   site: 'https://astro-blog-template.netlify.app',
   integrations: [mdx(), svelte()],
   markdown: {
