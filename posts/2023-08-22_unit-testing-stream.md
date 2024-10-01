@@ -3,7 +3,7 @@ title: Unit testing frontend code that consumes an HTTP stream
 publishDate: 2023-08-22
 ---
 
-A while back, I had to create a test like that for a React hook (but the example below applies for anything that consumes a stream with native fetch). But all I was able to find were articles on testing Node.js streams (i.e. backend perspective instead of frontend) and the following packages that didn’t work for me: fetch-mock, node-mocks-http.
+A while back, I had to create a test like that for a React hook (but the example below applies for anything that consumes a stream with native fetch). But all I was able to find were articles on testing Node.js streams (i.e. backend perspective instead of frontend) and the following packages that didn’t work for me: [`fetch-mock`](https://www.npmjs.com/package/fetch-mock), [`node-mocks-http`](https://www.npmjs.com/package/node-mocks-http).
 
 Oh, and ChatGPT suggested two different approaches (I think one of them involved `fetch-mock`) and when I told it that they don’t work for different reasons, it just kept apologizing for the confusion and looped infinitely between the two. 😆
 

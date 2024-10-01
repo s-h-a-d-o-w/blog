@@ -140,6 +140,10 @@ code {
   -moz-osx-font-smoothing: grayscale;
 }
 
+a > code {
+  color: inherit;
+}
+
 pre {
   border-radius: 8px !important;
   margin: 1.2em 0 !important;
