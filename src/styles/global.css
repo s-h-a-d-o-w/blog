@@ -297,7 +297,7 @@ input[name='theme-toggle'] {
   top: 0.5em;
   right: 0.5em;
   background-color: var(--code-background);
-  padding: 0.35em 0.5em;
+  padding: 0.5em 0.5em;
   font-size: 1em;
   line-height: 1em;
 
@@ -307,6 +307,8 @@ input[name='theme-toggle'] {
   border: none;
   border-radius: 0.25em;
   cursor: pointer;
+
+  display: flex;
 }
 
 .copy-code:hover {
