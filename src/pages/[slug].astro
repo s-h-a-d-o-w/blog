@@ -34,8 +34,25 @@ const permalink = `${Astro.site?.href}${slug}`;
         <Content />
       </CopyButtonWrapper>
     </article>
+    <div class="giscus" />
   </div>
 </BaseLayout>
+
+<script src="https://giscus.app/client.js"
+        data-repo="s-h-a-d-o-w/blog"
+        data-repo-id="R_kgDOM41aeA"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOM41aeM4CjA6p"
+        data-mapping="title"
+        data-strict="1"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>
 
 <style>
   header {

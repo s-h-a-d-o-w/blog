@@ -1,23 +1,65 @@
 <script>
-  const rootEl = typeof document !== 'undefined' ? document.documentElement : null;
-  const themes = ['light', 'dark'];
-  let theme = 'light'
+  // giscus theme switching functions - see https://github.com/giscus/giscus/blob/main/ADVANCED-USAGE.md#parent-to-giscus-message-events
+  // ================================================================
+  function sendMessage(message) {
+    const iframe = document.querySelector("iframe.giscus-frame");
+    if (!iframe) return;
+    iframe.contentWindow.postMessage({ giscus: message }, "https://giscus.app");
+  }
 
-  if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-    theme = localStorage.getItem('theme');
-  } else if (typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    theme = 'dark';
+  function handleMessage(event) {
+    if (event.origin !== "https://giscus.app") return;
+    if (!(typeof event.data === "object" && event.data.giscus)) return;
+
+    const giscusData = event.data.giscus;
+
+    // The only non-error message received from giscus seems to be this resize message, which serves as a heuristic for when it has finished loading. Because attempting to set the initial theme right away would happen too early.
+    if ("resizeHeight" in giscusData) {
+      sendMessage({
+        setConfig: {
+          theme,
+        },
+      });
+    }
+  }
+  // ================================================================
+
+  const rootEl =
+    typeof document !== "undefined" ? document.documentElement : null;
+  const themes = ["light", "dark"];
+  let theme = "light";
+
+  if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+    theme = localStorage.getItem("theme");
+  } else if (
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches
+  ) {
+    theme = "dark";
   }
 
   function handleChange(event) {
     theme = event.target.value;
-    localStorage.setItem('theme', theme);
+    localStorage.setItem("theme", theme);
+
+    // giscus theme switching
+    sendMessage({
+      setConfig: {
+        theme,
+      },
+    });
   }
 
-  $: if (rootEl && theme === 'light') {
-    rootEl.classList.remove('theme-dark');
-  } else if (rootEl && theme === 'dark') {
-    rootEl.classList.add('theme-dark');
+  // init theme class
+  $: if (rootEl && theme === "light") {
+    rootEl.classList.remove("theme-dark");
+  } else if (rootEl && theme === "dark") {
+    rootEl.classList.add("theme-dark");
+  }
+
+  // add giscus message handler for initialization
+  if (typeof window !== "undefined") {
+    window.addEventListener("message", handleMessage);
   }
 
   const icons = [
@@ -46,10 +88,9 @@
   ];
 </script>
 
-
 <div class="theme-toggle">
   {#each themes as t, i}
-    <label class={theme === t ? 'checked' : ''}>
+    <label class={theme === t ? "checked" : ""}>
       {@html icons[i]}
       <input
         type="radio"
