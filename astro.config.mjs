@@ -16,7 +16,7 @@ export default defineConfig({
       },
     },
   },
-  site: 'https://astro-blog-template.netlify.app',
+  site: process.env.NODE_ENV !=='production'? `http://localhost:4321/` : 'https://blog.letit.run/',
   integrations: [mdx(), svelte()],
   markdown: {
     shikiConfig: {
