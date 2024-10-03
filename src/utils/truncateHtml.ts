@@ -1,10 +1,21 @@
 import { NUM_CHARACTERS_DESCRIPTION } from "./consts";
 
 export function truncateHtml(html: string): string {
+  console.log("================")
+  console.log(html)
+  console.log("================")
+
   const doInsertEllipsis = html.length === NUM_CHARACTERS_DESCRIPTION
 
-  // We have to add a </p> in case the first thing is a belong paragraph. Otherwise, we would get an empty description.
-  html = html + '</p>'
+  // We have to add a </p> in case the first thing is a long paragraph. Otherwise, we would get an empty description.
+  // if (html.includes("<p>") && !html.includes("</p>")) {
+  //   return `${html}${doInsertEllipsis ? ' ...' : ''}</p>`
+  // }
+
+  // Remove first <p> if it's never closed
+  if (html.includes("<p>") && !html.includes("</p>")) {
+    html=html.substring(3)
+  }
 
   const voidTags = ['area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'param', 'source', 'track', 'wbr'];
   const tagRegex = /<\/?([a-zA-Z0-9]+)[^>]*>/g;
@@ -43,20 +54,16 @@ export function truncateHtml(html: string): string {
     result = result.substring(0, result.lastIndexOf('<' + tag));
   }
 
-  // Get rid of the potentially excessive </p>
-  const openingTags = result.match(/<p>/gi)?.length
-  const closingTags = result.match(/<\/p>/gi)?.length
-  if (openingTags !== undefined && closingTags !== undefined) {
-    if (closingTags - openingTags === 1) {
-      result = result.substring(0, result.length - 4)
-    } else if (closingTags - openingTags !== 0) {
-      throw new Error("HTML seems malformed: " + result)
-    }
+  // Remove potentially cut off tags from the end of the result
+  const lastTagStart = result.lastIndexOf('<')
+  const lastTagEnd = result.lastIndexOf('>')
+  if ((lastTagStart >= 0 && lastTagEnd === -1) || (lastTagStart >= 0 &&  lastTagStart > lastTagEnd)) {
+    result = result.substring(0, result.lastIndexOf('<')).trim();
   }
 
-  if (doInsertEllipsis && result.slice(-4) === '</p>') {
-    result = result.slice(0, -4) + ' ...</p>'
+  if (doInsertEllipsis) {
+    result += ' ...'
   }
 
-  return result;
+  return `<p>${result}</p>`;
 }
