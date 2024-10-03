@@ -1,10 +1,6 @@
 import { NUM_CHARACTERS_DESCRIPTION } from "./consts";
 
 export function truncateHtml(html: string): string {
-  console.log("================")
-  console.log(html)
-  console.log("================")
-
   const doInsertEllipsis = html.length === NUM_CHARACTERS_DESCRIPTION
 
   // We have to add a </p> in case the first thing is a long paragraph. Otherwise, we would get an empty description.
