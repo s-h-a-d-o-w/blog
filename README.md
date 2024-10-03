@@ -1,5 +1,8 @@
 # Blog
 
+Since I based this on a template, please don't change the code quality as if it was mine. 😅 
+This also made me realize that serenade doesn't support astro, so the formatting can be strange and ugly in places too. But it works well, which is all I'm really looking for it in a simple blog. 😄
+
 ## How to run on WSL
 
 ```
