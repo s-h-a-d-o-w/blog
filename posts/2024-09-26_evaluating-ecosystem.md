@@ -1,6 +1,7 @@
 ---
 title: Evaluating React framework/styling options — it’s not looking great currently
 publishDate: 2024-09-26
+lastUpdated: 2024-10-05
 ---
 
 I would like to preface this by saying that I’m sure all the people who have worked very hard on the following projects only mean well. That said, people 5–10 years ago also worked very hard and meant well, yet they gave us things like React, TypeScript, the early Next.js, styled-components, emotion, jest, playwright, testing library, etc. — all of which were generally robust. Maybe it has to do with the whole “iterate and release as much stuff as fast as possible” mindset that has gotten more and more a hold of the entire industry. Or maybe it’s just that my own perception has become more discerning?
@@ -99,9 +100,9 @@ I’ll start off with a list of tools and their pros and cons. (Usage numbers li
 ✅ Like others here — should theoretically support RSC. Next.js team says it doesn’t.  
 ❌ Quite a bit of boilerplate for variants.  
 ❌ Pipelines on master have been failing for a long time.  
-❌ Use JS in core modules, even though this project is only half a year old.  
+❌ Use JS in core modules ([example](https://github.com/mui/pigment-css/blob/master/packages/pigment-css-react/src/styled.js)), even though this project is only half a year old.  
 ❌ Use mocha.  
-❌ Maybe there’s a good reason for using a fixed pnpm version in `engines`, a high number of dependency overrides and using 3 different monorepo tools (pnpm workspaces, nx, lerna). But it strikes me as chaotic.  
+❌ Maybe there’s a good reason for using a [fixed pnpm version in `engines`](https://github.com/mui/material-ui/blob/e6ff0b5016ac4fa40cdc9b78a0d9ecdd2c0cd9db/package.json#L204), a high number of dependency overrides and using 3 different monorepo tools (pnpm workspaces, nx, lerna). But it strikes me as chaotic.  
 
 ## emotion/styled-components
 ❌ Despite what [the Next.js docs](https://nextjs.org/docs/app/building-your-application/styling/css-in-js) say, [it looks like this will actually never support RSC](https://github.com/emotion-js/emotion/issues/2928).  
@@ -113,6 +114,15 @@ I’ll start off with a list of tools and their pros and cons. (Usage numbers li
 ❌ Obviously — contrary to at least traditional CSS-in-JS, easy to come across precedence problems when sharing styles across components.  
 ❌ Usage of classes or variables generally can’t be traced by the IDE, has to be done using full text search. Can be a problem with large projects due to name collisions and variables being declared across a number of files.  
 ❌ CSS variable boilerplate.  
+
+## material-ui
+
+🤷 Has been very popular and around for a long time. On the one hand, that can indicate a certain amount of reliability. On the other hand, pipelines on `master` seem to fail ~50% of the time thoughand it looks like they haven't invested much into keeping their tech reasonably recent.
+
+[![material-ui downloads](/assets/2024-09-26_evaluating-ecosystem/materialui-downloads.png)](https://npmtrends.com/@material-ui/core-vs-@mui/material-vs-material-ui)
+
+❌ Code is  44% JS, 55.8% TS.  
+❌ The same tech decisions as Pigment CSS (fixed package manager version requirement, mocha, nx/pnpm/lerna, high amount of dependency overrides) - both are made by mui after all. Although it seems like with Pigment CSS, there was an opportunity for a fresh start.
 
 ## Open Props
 ✅ [Very high satisfaction](https://2023.stateofcss.com/en-US/css-frameworks/).  
@@ -145,4 +155,3 @@ As for CSS — a real conundrum. In one project, I used CSS modules and in the o
 But that’s just me. I’m sure there are many who work on content-driven apps (or maybe huge projects with multiple different frontends) all the time who rightly love Astro. And maybe many who just ignore all the server-side optimizations and just ship their purely client-side app e.g. bundled with vite — fair enough. Many are obviously in love with Tailwind. And then there are those who don’t mind possibly digging through hundreds of full text search results on a large code base, trying to figure out whether some design tokens are even still used. From these points of views, everything is of course just fine.
 
 And at least when it comes to the JS/web ecosystem more broadly, e.g. playwright still seems decent and reliable. Vitest also seems like a great drop-in replacement for jest. I also love how pnpm has improved so much over the years that it has become more popular than yarn (which I enjoyed using for years before finally switching to pnpm probably about a year ago) has ever been. And I’m a fan of some recent native additions like `dialog` or `details` to HTML (some decisions at least with `dialog` seem odd but at least I don’t have to write [potentially a ton of code for dealing with accessibility](https://github.com/radix-ui/primitives/blob/main/packages/react/dialog/src/Dialog.tsx). 😅) or `toReversed()` in JS. So… there’s still great stuff. Fingers crossed that the whole framework (using the term loosely)/styling situation will improve again too. Maybe people will *finally* knock it off with cranking out things as quickly as possible and instead do fewer things well — if that really is the underlying problem.
-
