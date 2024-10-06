@@ -49,7 +49,6 @@ h6 {
 }
 
 h1 {
-  font-family: var(--font-family-serif);
   font-size: 2.5em;
   margin: 0 0 1em 0;
 }
@@ -208,6 +207,7 @@ td {
 }
 
 .content h1 {
+  font-family: var(--font-family-serif);
   font-size: 2.2em;
   margin: 1em 0 0 0;
 }
