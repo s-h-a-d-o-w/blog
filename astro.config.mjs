@@ -5,6 +5,7 @@ import mdx from '@astrojs/mdx'
 import remarkGfm from 'remark-gfm'
 import remarkSmartypants from 'remark-smartypants'
 import rehypeExternalLinks from 'rehype-external-links'
+import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
@@ -17,7 +18,7 @@ export default defineConfig({
     },
   },
   site: process.env.NODE_ENV !=='production'? `http://localhost:4321/` : 'https://blog.letit.run/',
-  integrations: [mdx(), svelte()],
+  integrations: [mdx(), svelte(), sitemap()],
   markdown: {
     shikiConfig: {
       themes: {
