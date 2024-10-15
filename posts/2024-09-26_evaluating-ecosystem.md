@@ -102,7 +102,7 @@ I’ll start off with a list of tools and their pros and cons. (Usage numbers li
 ❌ Pipelines on master have been failing for a long time.  
 ❌ Use JS in core modules ([example](https://github.com/mui/pigment-css/blob/master/packages/pigment-css-react/src/styled.js)), even though this project is only half a year old.  
 ❌ Use mocha.  
-❌ Maybe there’s a good reason for using a [fixed pnpm version in `engines`](https://github.com/mui/material-ui/blob/e6ff0b5016ac4fa40cdc9b78a0d9ecdd2c0cd9db/package.json#L204), a high number of dependency overrides and using 3 different monorepo tools (pnpm workspaces, nx, lerna). But it strikes me as chaotic.  
+❌ Maybe there’s a good reason for using a high number of dependency overrides and 3 different monorepo tools (pnpm workspaces, nx, lerna). But it strikes me as chaotic.  
 
 ## emotion/styled-components
 ❌ Despite what [the Next.js docs](https://nextjs.org/docs/app/building-your-application/styling/css-in-js) say, [it looks like this will actually never support RSC](https://github.com/emotion-js/emotion/issues/2928).  
@@ -122,7 +122,7 @@ I’ll start off with a list of tools and their pros and cons. (Usage numbers li
 [![material-ui downloads](/assets/2024-09-26_evaluating-ecosystem/materialui-downloads.png)](https://npmtrends.com/@material-ui/core-vs-@mui/material-vs-material-ui)
 
 ❌ Code is  44% JS, 55.8% TS.  
-❌ The same tech decisions as Pigment CSS (fixed package manager version requirement, mocha, nx/pnpm/lerna, high amount of dependency overrides) - both are made by mui after all. Although it seems like with Pigment CSS, there was an opportunity for a fresh start.
+❌ The same tech decisions as Pigment CSS (mocha, nx/pnpm/lerna, high amount of dependency overrides) - both are made by mui after all. Although it seems like with Pigment CSS, there was an opportunity for a fresh start.
 
 ## Open Props
 ✅ [Very high satisfaction](https://2023.stateofcss.com/en-US/css-frameworks/).  
