@@ -60,7 +60,7 @@ const { isRoot } = Astro.props
   {isRoot ? <div class="title">
     <h1 style={{fontSize: "2.5em", margin: "0"}}>Frontend, TS and Stuff</h1>
     <div class="subtitle">Infrequent, irregular thoughts by <a href="https://github.com/s-h-a-d-o-w" target="_blank"><img src="https://avatars.githubusercontent.com/u/16936908?v=4" alt="Headshot of Andreas Opferkuch"></a></div>
-  </div> : <a href="/">
+  </div> : <a href="/" aria-label="Go back">
     <BackButton />
   </a>}
   <Nav />
