@@ -2,26 +2,28 @@
   "name": "blog",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev --host",
-    "start": "astro dev",
     "build": "astro check && astro build",
+    "dev": "astro dev --host",
+    "e2e": "rimraf test-results && playwright test",
     "preview": "astro --host preview",
-    "astro": "astro",
+    "start": "astro dev",
     "test": "vitest"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.3",
-    "@astrojs/mdx": "^2.0.0",
+    "@astrojs/check": "^0.9.4",
+    "@astrojs/mdx": "^3.1.9",
     "@astrojs/sitemap": "^3.2.1",
-    "@astrojs/svelte": "^5.0.0",
-    "astro": "^4.0.1",
+    "@astrojs/svelte": "^5.7.3",
+    "astro": "^4.16.13",
     "rehype-external-links": "^3.0.0",
     "remark-gfm": "^4.0.0",
     "remark-smartypants": "^2.0.0",
     "typescript": "^5.6.2"
   },
   "devDependencies": {
+    "@playwright/test": "^1.48.2",
     "@types/node": "^22.7.4",
+    "rimraf": "^6.0.1",
     "vitest": "^2.1.1"
   }
 }
