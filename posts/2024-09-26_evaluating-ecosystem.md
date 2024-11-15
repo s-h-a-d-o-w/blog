@@ -117,7 +117,7 @@ I’ll start off with a list of tools and their pros and cons. (Usage numbers li
 
 ## material-ui
 
-🤷 Has been very popular and around for a long time. On the one hand, that can indicate a certain amount of reliability. On the other hand, pipelines on `master` seem to fail ~50% of the time thoughand it looks like they haven't invested much into keeping their tech reasonably recent.
+🤷 Has been very popular and around for a long time. On the one hand, that can indicate a certain amount of reliability. On the other hand, pipelines on `master` seem to fail ~50% of the time. And it looks like they haven't invested much into keeping their tech reasonably recent.
 
 [![material-ui downloads](/assets/2024-09-26_evaluating-ecosystem/materialui-downloads.png)](https://npmtrends.com/@material-ui/core-vs-@mui/material-vs-material-ui)
 
