@@ -1,13 +1,17 @@
 name: Deployment
 
 on:
-  push:
-    branches: 
+  workflow_run:
+    workflows: ["e2e"]
+    types:
+      - completed
+    branches:
       - master
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
 
     steps:
     - uses: actions/checkout@v4
