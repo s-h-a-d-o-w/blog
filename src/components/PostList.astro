@@ -9,13 +9,11 @@ export interface Props {
 }
 
 const { posts } = Astro.props;
-console.log(posts)
 ---
 
 <div class="article-container">
   {
     posts.map((post, index) => {
-      console.log(post.file)
       const href = `/blog/${post.file.split("/").pop()?.split(".").shift()}`;
 
       return (

@@ -4,7 +4,7 @@ publishDate: 2024-09-26
 lastUpdated: 2024-10-05
 ---
 
-I would like to preface this by saying that I’m sure all the people who have worked very hard on the following projects only mean well. That said, people 5–10 years ago also worked very hard and meant well, yet they gave us things like React, TypeScript, the early Next.js, styled-components, emotion, jest, playwright, testing library, etc. — all of which were generally robust.
+I would like to preface this by saying that I’m sure all the people who have worked very hard on the following projects only mean well. That said, people 5-10 years ago also worked very hard and meant well, yet they gave us things like React, TypeScript, the early Next.js, styled-components, emotion, jest, playwright, testing library, etc.—all of which were generally robust.
 
 Given that there are many React haters, I should note that while I have looked at solid, svelte, astro and previously Vue and wouldn’t necessarily mind using some of them, I still love React. This article is mostly about the things used with React. React at its core is just as wonderful as it has ever been, particularly since the move to hooks.
 

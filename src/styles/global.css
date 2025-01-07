@@ -252,7 +252,7 @@ input[name='theme-toggle'] {
   z-index: -1;
 }
 
-@media (max-width: 680px) {
+@media (max-width: 700px) {
   /* body {
     font-size: 0.1em;
   } */
