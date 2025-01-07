@@ -19,21 +19,23 @@ const { posts } = Astro.props;
       return (
         <>
           {index !== 0 && <hr />}
-          <article class="post-item">
-            <h2>
-              <a href={href}>{post.frontmatter.title}</a>
-            </h2>
-            <div
-              set:html={truncateHtml(
-                post.compiledContent().slice(0, NUM_CHARACTERS_DESCRIPTION),
-              )}
-            />
-            <div class="post-item-footer">
-              <span class="post-item-date">
-                — {new Date(post.frontmatter.publishDate).toLocaleDateString()}
-              </span>
-            </div>
-          </article>
+          <a href={href} class="post-link">
+            <article class="post-item">
+              <h2>
+                {post.frontmatter.title}
+              </h2>
+              <div
+                set:html={truncateHtml(
+                  post.compiledContent().slice(0, NUM_CHARACTERS_DESCRIPTION),
+                )}
+              />
+              <div class="post-item-footer">
+                <span class="post-item-date">
+                  — {new Date(post.frontmatter.publishDate).toLocaleDateString()}
+                </span>
+              </div>
+            </article>
+          </a>
         </>
       );
     })
@@ -41,10 +43,18 @@ const { posts } = Astro.props;
 </div>
 
 <style>
+  h2 {
+    text-decoration: underline;
+  }
+
   h2,
   .post-item-footer {
     font-family: var(--font-family-sans);
     font-weight: 700;
+  }
+
+  hr {
+    margin: 60px auto;
   }
 
   .post-item-date {
@@ -54,7 +64,14 @@ const { posts } = Astro.props;
     margin-right: 16px;
   }
 
-  hr {
-    margin: 60px auto;
+  .post-link {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    display: block;
+  }
+
+  .post-link:hover, .post-link:hover .post-item-date {
+    color: var(--primary-color);
   }
 </style>
