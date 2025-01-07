@@ -1,0 +1,81 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getPosts } from "../../utils/getPosts.astro";
+import PostList from "../../components/PostList.astro";
+
+const title = "Frontend, TS and Stuff";
+const description =
+  "Andreas Opferkuch's thoughts mostly on frontend technology and TypeScript.";
+const permalink = Astro.site?.href ?? "";
+
+let allPosts = await getPosts();
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  permalink={permalink}
+  isRoot
+>
+  <div class="title">
+    <h1 style={{ fontSize: "2.5em", margin: "0" }}>Frontend, TS and Stuff</h1>
+    <div class="subtitle">
+      Infrequent, irregular thoughts by{" "}
+      <a href="/">
+        <img
+          src="https://avatars.githubusercontent.com/u/16936908?v=4"
+          alt="Headshot of Andreas Opferkuch"
+        />
+      </a>
+    </div>
+  </div>
+
+  <PostList posts={allPosts} />
+</BaseLayout>
+
+<style>
+  h2,
+  .post-item-footer {
+    font-family: var(--font-family-sans);
+    font-weight: 700;
+  }
+
+  .post-item-date {
+    color: var(--text-secondary);
+    text-align: left;
+    text-transform: uppercase;
+    margin-right: 16px;
+  }
+
+  hr {
+    margin: 60px auto;
+  }
+
+  img {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 2rem;
+    display: block;
+    margin-right: 1rem;
+  }
+
+  .title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.3rem;
+
+    margin: 1em 0 2em 0;
+    @media (max-width: 680px) {
+      margin: 3.5em 0 2em 0;
+    }
+  }
+
+  .subtitle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    font-size: 0.9rem;
+  }
+</style>

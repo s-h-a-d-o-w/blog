@@ -1,9 +1,9 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 import type { MarkdownInstance } from 'astro';
-import { truncateHtml } from '../utils/truncateHtml';
-import { NUM_CHARACTERS_DESCRIPTION } from '../utils/consts';
-import CopyButtonWrapper from '../components/CopyButtonWrapper.astro';
+import { truncateHtml } from '../../utils/truncateHtml';
+import { NUM_CHARACTERS_DESCRIPTION } from '../../utils/consts';
+import CopyButtonWrapper from '../../components/CopyButtonWrapper.astro';
 
 export async function getStaticPaths() {
   const posts = (await Astro.glob('../../posts/*.md')) as MarkdownInstance<Record<string, any>>[];

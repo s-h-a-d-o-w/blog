@@ -1,7 +1,8 @@
 # Blog
 
-Since I based this on a template, please don't change the code quality as if it was mine. 😅 
-This also made me realize that [serenade](https://github.com/serenadeai/serenade) doesn't support astro, so the formatting can be strange and ugly in places too. But it works well, which is all I'm really looking for it in a simple blog. 😄
+I based this on a [template](https://github.com/Charca/astro-blog-template/tree/main).
+
+This made me realize that [serenade](https://github.com/serenadeai/serenade) doesn't support astro, so the formatting can be strange and ugly in places. But it works well, which is all I'm really looking for it in a simple blog. 😄
 
 ## How to run on WSL
 

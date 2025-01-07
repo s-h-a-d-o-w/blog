@@ -1,0 +1,60 @@
+---
+import type { MarkdownInstance } from "astro";
+import type { FrontMatter } from "../types";
+import { truncateHtml } from '../utils/truncateHtml'
+import { NUM_CHARACTERS_DESCRIPTION } from '../utils/consts';
+
+export interface Props {
+  posts: MarkdownInstance<FrontMatter>[];
+}
+
+const { posts } = Astro.props;
+---
+
+<div class="article-container">
+  {
+    posts.map((post, index) => {
+      const href = `/${post.file.split("/").pop()?.split(".").shift()}`;
+
+      return (
+        <>
+          {index !== 0 && <hr />}
+          <article class="post-item">
+            <h2>
+              <a href={href}>{post.frontmatter.title}</a>
+            </h2>
+            <div
+              set:html={truncateHtml(
+                post.compiledContent().slice(0, NUM_CHARACTERS_DESCRIPTION),
+              )}
+            />
+            <div class="post-item-footer">
+              <span class="post-item-date">
+                — {new Date(post.frontmatter.publishDate).toLocaleDateString()}
+              </span>
+            </div>
+          </article>
+        </>
+      );
+    })
+  }
+</div>
+
+<style>
+  h2,
+  .post-item-footer {
+    font-family: var(--font-family-sans);
+    font-weight: 700;
+  }
+
+  .post-item-date {
+    color: var(--text-secondary);
+    text-align: left;
+    text-transform: uppercase;
+    margin-right: 16px;
+  }
+
+  hr {
+    margin: 60px auto;
+  }
+</style>
