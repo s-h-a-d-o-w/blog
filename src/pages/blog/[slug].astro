@@ -1,34 +1,44 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import type { MarkdownInstance } from 'astro';
-import { truncateHtml } from '../../utils/truncateHtml';
-import { NUM_CHARACTERS_DESCRIPTION } from '../../utils/consts';
-import CopyButtonWrapper from '../../components/CopyButtonWrapper.astro';
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { truncateHtml } from "../../utils/truncateHtml";
+import { NUM_CHARACTERS_DESCRIPTION } from "../../utils/consts";
+import CopyButtonWrapper from "../../components/CopyButtonWrapper.astro";
+import { getPosts } from "../../utils/getPosts.astro";
 
 export async function getStaticPaths() {
-  const posts = (await Astro.glob('../../posts/*.md')) as MarkdownInstance<Record<string, any>>[];
-  return posts.map(p => {
-    const slug =p.file.split('/').pop()?.split('.').shift()
+  return (await getPosts()).map((post) => {
+    const slug = post.file.split("/").pop()?.split(".").shift();
     return {
-    params: { slug },
-    props: { post: p, slug },
-  }});
+      params: { slug },
+      props: { post, slug },
+    };
+  });
 }
 
 const { Content, frontmatter, compiledContent } = Astro.props.post;
-const { title,  publishDate, lastUpdated } = frontmatter;
-const description = truncateHtml(compiledContent().slice(0, NUM_CHARACTERS_DESCRIPTION))
-const slug = Astro.props.slug
+const { title, publishDate, lastUpdated } = frontmatter;
+const description = truncateHtml(
+  compiledContent().slice(0, NUM_CHARACTERS_DESCRIPTION),
+);
+const slug = Astro.props.slug;
 const permalink = `${Astro.site?.href}${slug}`;
 ---
 
 <BaseLayout title={title} description={description} permalink={permalink}>
   <header>
     <p>{new Date(publishDate).toLocaleDateString()}</p>
-    {lastUpdated  && <p style={{
-      marginTop: "-1.5rem",
-      textTransform: "none",
-    }}>Last updated: {new Date(lastUpdated).toLocaleDateString()}</p>}
+    {
+      lastUpdated && (
+        <p
+          style={{
+            marginTop: "-1.5rem",
+            textTransform: "none",
+          }}
+        >
+          Last updated: {new Date(lastUpdated).toLocaleDateString()}
+        </p>
+      )
+    }
     <h1>{title}</h1>
     <hr />
   </header>
@@ -38,26 +48,27 @@ const permalink = `${Astro.site?.href}${slug}`;
         <Content />
       </CopyButtonWrapper>
     </article>
-    <div class="giscus" />
+    <div class="giscus"></div>
   </div>
 </BaseLayout>
 
-<script is:inline
-        src="https://giscus.app/client.js"
-        data-repo="s-h-a-d-o-w/blog"
-        data-repo-id="R_kgDOM41aeA"
-        data-category="Announcements"
-        data-category-id="DIC_kwDOM41aeM4CjA6p"
-        data-mapping="title"
-        data-strict="1"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="top"
-        data-theme="light"
-        data-lang="en"
-        crossorigin="anonymous"
-        async>
-</script>
+<script
+  is:inline
+  src="https://giscus.app/client.js"
+  data-repo="s-h-a-d-o-w/blog"
+  data-repo-id="R_kgDOM41aeA"
+  data-category="Announcements"
+  data-category-id="DIC_kwDOM41aeM4CjA6p"
+  data-mapping="title"
+  data-strict="1"
+  data-reactions-enabled="1"
+  data-emit-metadata="0"
+  data-input-position="top"
+  data-theme="light"
+  data-lang="en"
+  crossorigin="anonymous"
+  async
+></script>
 
 <style>
   header {
