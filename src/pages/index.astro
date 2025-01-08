@@ -7,7 +7,7 @@ import { getPosts } from "../utils/getPosts.astro";
 const title = "Andreas Opferkuch's portfolio";
 const description = "Social links and blog, available for freelance gigs";
 const permalink = Astro.site?.href ?? "";
-const recentPosts = await getPosts(3);
+const recentPosts = (await getPosts()).slice(0, 3);
 ---
 
 <BaseLayout
