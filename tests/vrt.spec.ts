@@ -7,7 +7,7 @@ readdirSync(join(process.cwd(), 'posts'))
   .map(file => file.replace('.md', ''))
   .forEach(post => {
     test(`VRT for ${post}`, async ({ page }) => {
-      await page.goto(`/${post}`);
+      await page.goto(`/blog/${post}`);
       await page.waitForSelector('article');
       await expect(page).toHaveScreenshot({
         fullPage: true,
@@ -15,3 +15,12 @@ readdirSync(join(process.cwd(), 'posts'))
       });
     });
   })
+
+test(`VRT for landing page`, async ({ page }) => {
+  await page.goto(`/`);
+  await page.waitForSelector('article');
+  await expect(page).toHaveScreenshot({
+    fullPage: true,
+    timeout: 10000
+  });
+});
