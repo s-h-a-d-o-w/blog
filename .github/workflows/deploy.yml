@@ -23,10 +23,14 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: 20
-    - name: Install, test, deploy
+    - name: Install, test
       run: |
         pnpm install --frozen-lockfile
+        pnpm install @playwright/test
+        pnpm playwright install --with-deps
         pnpm test
+    - name: Deploy
+      run: |
         sh deploy.sh
       env:
         CAPROVER_PASSWORD: ${{ secrets.CAPROVER_PASSWORD }}
