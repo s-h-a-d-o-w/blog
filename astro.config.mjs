@@ -5,6 +5,7 @@ import mdx from '@astrojs/mdx'
 import remarkGfm from 'remark-gfm'
 import remarkSmartypants from 'remark-smartypants'
 import rehypeExternalLinks from 'rehype-external-links'
+import remarkMermaid from 'remark-mermaidjs'
 import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
@@ -26,7 +27,7 @@ export default defineConfig({
         dark: 'dracula',
       },
     },
-    remarkPlugins: [remarkGfm, remarkSmartypants],
+    remarkPlugins: [remarkGfm, remarkSmartypants, remarkMermaid],
     rehypePlugins: [
       [
         rehypeExternalLinks,
