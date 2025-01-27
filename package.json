@@ -2,8 +2,8 @@
   "name": "blog",
   "version": "0.0.1",
   "scripts": {
-    "build": "astro check && astro build",
-    "dev": "astro dev --host",
+    "build": "astro check && docker-compose -f kroki/docker-compose.yml up -d && astro build && docker-compose -f kroki/docker-compose.yml down",
+    "dev": "concurrently \"docker-compose -f kroki/docker-compose.yml up\" \"astro dev --host\"",
     "e2e": "rimraf test-results && playwright test",
     "preview": "astro --host preview",
     "start": "astro dev",
@@ -21,10 +21,23 @@
     "typescript": "^5.6.3"
   },
   "devDependencies": {
+    "@astrojs/markdown-remark": "^6.0.2",
     "@playwright/test": "^1.48.2",
+    "@types/lodash": "^4.17.14",
+    "@types/lodash-es": "^4.17.12",
     "@types/node": "^22.7.4",
+    "concurrently": "^9.1.2",
+    "lodash": "^4.17.21",
+    "lodash-es": "^4.17.21",
+    "mdast-util-find-and-replace": "^3.0.2",
+    "rehype-rewrite": "^4.0.2",
+    "remark-kroki": "^0.3.7",
     "remark-mermaidjs": "^7.0.0",
     "rimraf": "^6.0.1",
+    "sass": "^1.83.4",
+    "tsx": "^4.19.2",
+    "unist-util-visit": "^5.0.0",
+    "vega-lite": "^5.23.0",
     "vitest": "^2.1.1"
   }
 }
