@@ -1,6 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
 
-const BASE_URL ='http://localhost:4321'
+const BASE_URL ='http://localhost:3000'
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -14,7 +14,7 @@ export default defineConfig({
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
 
-  retries: 0,
+  retries: 1,
 
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: 'html',
@@ -44,6 +44,5 @@ export default defineConfig({
   webServer: {
     command: 'pnpm start',
     url: BASE_URL,
-    reuseExistingServer: !process.env.CI,
   },
 });

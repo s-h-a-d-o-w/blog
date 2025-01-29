@@ -1,95 +1,21 @@
-import { defineConfig } from 'astro/config'
-import svelte from '@astrojs/svelte'
 import mdx from '@astrojs/mdx'
+import sitemap from '@astrojs/sitemap'
+import svelte from '@astrojs/svelte'
+import { defineConfig } from 'astro/config'
+import rehypeExternalLinks from 'rehype-external-links'
+import rehypeRaw from 'rehype-raw'
+import rehypeRewrite, { type RehypeRewriteOptions } from 'rehype-rewrite'
 import remarkGfm from 'remark-gfm'
 import remarkSmartypants from 'remark-smartypants'
-import rehypeExternalLinks from 'rehype-external-links'
-import remarkMermaid from 'remark-mermaidjs'
-import type { RemarkMermaidOptions } from 'remark-mermaidjs'
-import sitemap from '@astrojs/sitemap';
 // @ts-expect-error
-import { remarkKroki } from 'remark-kroki';
-import type { RemarkPlugin } from "@astrojs/markdown-remark"
-import { visit } from 'unist-util-visit'
-import rehypeRewrite, { type RehypeRewriteOptions } from 'rehype-rewrite';
-import rehypeRaw from 'rehype-raw'
-import { isMatch, merge } from 'lodash-es'
-import type { TopLevelSpec } from 'vega-lite';
+import { remarkKroki } from 'remark-kroki'
+import { remarkMergeData, type MergeDataOptions } from 'remark-merge-data'
+import type { TopLevelSpec } from 'vega-lite'
 
-const remarkMermaidOptions: RemarkMermaidOptions = {
-  mermaidConfig: {
-    // Custom font might be possible once the following is resolved:
-    // https://github.com/mermaid-js/mermaid/issues/1540#issuecomment-2609688846
-    // fontFamily: 'Merriweather',
-    // themeCSS: `
-    //   @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=block');
-    //   `,
-
-    fontFamily: '"Bitstream Charter", "Sitka Text", Cambria, serif',
-    // fontFamily: 'serif',
-    themeVariables: {
-      xyChart: {
-        backgroundColor: "#00000000",
-      }
-    },
-    xyChart: {
-      titleFontSize: 24,
-      xAxis: {
-        labelFontSize: 16
-      },
-      yAxis: {
-        labelFontSize: 16
-      }
-    }
-  }
-}
-
-type MergeDataProps = {
-  data: unknown
-  lang: string
-
-  isYaml?: boolean
-  meta?: Record<string, string>
-  parse?: (data: string) => unknown
-  stringify?: (data: unknown) => string
-}
-const jsonStringify = (dataToStringify: unknown) => {
-  return JSON.stringify(dataToStringify, null, 2)
-}
-
-// Can be used to merge any JSON or YAML data in a matching code block with the provided data.
-const remarkMergeData: RemarkPlugin<[MergeDataProps]> = ({ data, lang, isYaml, meta, parse, stringify }) => {
-  const parseFunction = parse || JSON.parse
-  const stringifyFunction = stringify || jsonStringify
-  return (tree) => {
-    visit(tree, 'code', function (node) {
-      if (node.lang === lang) {
-        console.log("lang matches")
-        if (meta) {
-          if (!node.meta) {
-            return
-          }
-          const nodeMeta = Object.fromEntries(node.meta.split(" ").map(entry => {
-            return entry.split("=")
-          }) as [string, string][])
-          if (!isMatch(nodeMeta, meta)) {
-            // No metadata match found.
-            return
-          }
-        }
-
-        console.log("merging data")
-        const documentData = parseFunction(node.value)
-        node.value = stringifyFunction(merge(data, documentData))
-      }
-    })
-  }
-}
-
+// Remove opaque background
 const rewriteKrokiSVG: RehypeRewriteOptions = {
   selector: ".kroki-inline-svg svg",
   rewrite: (node) => {
-    console.log("matches")
     if (node.type === "element") {
       delete node.properties.height;
       delete node.properties.width;
@@ -104,6 +30,7 @@ const rewriteKrokiSVG: RehypeRewriteOptions = {
   }
 }
 
+// Commented out props should usually be provided by the individual charts.
 const vegaGlobals: TopLevelSpec = {
   $schema: "https://vega.github.io/schema/vega-lite/v5.json",
   // width: ...,
@@ -169,9 +96,9 @@ const vegaGlobals: TopLevelSpec = {
   }]
 }
 
-const mergeDataProps: MergeDataProps = {
+const mergeDataProps: MergeDataOptions = {
   lang: 'kroki',
-  meta: {type: "vegalite"},
+  meta: { type: "vegalite" },
   data: vegaGlobals
 }
 
@@ -211,7 +138,7 @@ export default defineConfig({
         alias: ['plantuml'],
         output: "inline-svg"
       }],
-      [remarkMermaid, remarkMermaidOptions]],
+    ],
     rehypePlugins: [
       rehypeRaw,
       [rehypeRewrite, rewriteKrokiSVG],
