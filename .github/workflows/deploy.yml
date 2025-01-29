@@ -23,12 +23,11 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: 20
-    - name: Install, test
+    - name: Install
       run: |
-        pnpm install --frozen-lockfile
+        pnpm install --prod
         pnpm install @playwright/test
-        pnpm playwright install --with-deps
-        pnpm test
+        pnpm playwright install --with-deps chromium
     - name: Deploy
       run: |
         sh deploy.sh

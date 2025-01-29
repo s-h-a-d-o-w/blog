@@ -26,6 +26,7 @@ jobs:
     - name: Install dependencies
       run: |
         pnpm install
+        pnpm test
         pnpm exec playwright install --with-deps
     - name: Download snapshots
       run: aws s3 sync s3://${{ secrets.S3_BUCKET_NAME }}/blog/ tests/__snapshots__/
