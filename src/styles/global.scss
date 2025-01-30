@@ -324,43 +324,13 @@ input[name='theme-toggle'] {
   text-decoration: var(--shiki-dark-text-decoration) !important;
 }
 
-// Mermaid charts
-// ================================================
-svg[aria-roledescription=xychart] {
-  path {
-    stroke: black;
-  }
-
-  text {
-    // TODO: Once custom font clipping problem is resoled
-    // font-family: var(--font-family-serif);
-    font-family: "Bitstream Charter", "Sitka Text", Cambria, serif;
-    fill: black;
-  }
-
-  .plot {
-    rect {
-      fill: var(--primary-color);
-    }
-  }
-
-  html.theme-dark & {
-    path {
-      stroke: white;
-    }
-
-    text {
-      fill: white;
-    }
-  }
-}
-
 .kroki-inline-svg {
   @media (min-width: 480px) {
     .role-axis text,
     .role-mark text {
       font-size: 10px;
     }
+
     .role-title text {
       font-size: 12px;
     }
@@ -372,5 +342,23 @@ svg[aria-roledescription=xychart] {
     left: -2em;
     position: relative;
     padding: 0 0.5em;
+  }
+}
+
+html.theme-dark .kroki-inline-svg {
+  text {
+    fill: white;
+  }
+
+  .background {
+    stroke: #666;
+  }
+
+  .role-axis line {
+    stroke: white;
+  }
+
+  .role-axis .role-axis-grid line {
+    stroke: #666;
   }
 }
