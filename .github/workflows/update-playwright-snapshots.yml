@@ -25,7 +25,12 @@ jobs:
         pnpm install
         pnpm exec playwright install --with-deps
     - name: Generate new snapshots
+      continue-on-error: true
       run: pnpm e2e
     - name: Upload new snapshots
-      if: always()
-      run: aws s3 sync tests/__snapshots__/ s3://${{ secrets.S3_BUCKET_NAME }}/blog/
+      run: |
+        if [ ! -d "tests/__snapshots__" ]; then
+          echo "Error: No snapshots were generated"
+          exit 1
+        fi
+        aws s3 sync tests/__snapshots__/ s3://${{ secrets.S3_BUCKET_NAME }}/blog/
