@@ -5,6 +5,7 @@
     "build": "docker compose -f kroki/docker-compose.yml up -d && astro build && docker compose -f kroki/docker-compose.yml down",
     "dev": "concurrently \"docker compose -f kroki/docker-compose.yml up\" \"astro dev --host\"",
     "e2e": "rimraf test-results && playwright test",
+    "e2e:update": "playwright test --update-snapshots",
     "preview": "astro --host preview",
     "start": "pnpm build && serve dist",
     "test": "vitest"
