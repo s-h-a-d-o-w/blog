@@ -2,7 +2,7 @@ import test, { expect } from "@playwright/test";
 
 test(`navigate to blog posts from landing page`, async ({ page }) => {
   await page.goto(`/`);
-  await page.getByRole('article').first().click()
+  await page.getByRole('article').getByRole("heading").first().click()
 
   await page.waitForURL(/blog\/[0-9]+/g)
   await page.getByRole('article').waitFor()
