@@ -361,4 +361,8 @@ html.theme-dark .kroki-inline-svg {
   .role-axis .role-axis-grid line {
     stroke: #666;
   }
+
+  .role-legend .background {
+    display: none;
+  }
 }

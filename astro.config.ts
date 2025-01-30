@@ -7,10 +7,9 @@ import rehypeRaw from 'rehype-raw'
 import rehypeRewrite, { type RehypeRewriteOptions } from 'rehype-rewrite'
 import remarkGfm from 'remark-gfm'
 import remarkSmartypants from 'remark-smartypants'
-// @ts-expect-error
+import merge from 'lodash-es/merge'
 import { remarkKroki } from 'remark-kroki'
 import { remarkMergeData, type MergeDataOptions } from 'remark-merge-data'
-import type { TopLevelSpec } from 'vega-lite'
 
 // Remove opaque background
 const rewriteKrokiSVG: RehypeRewriteOptions = {
@@ -31,7 +30,7 @@ const rewriteKrokiSVG: RehypeRewriteOptions = {
 }
 
 // Commented out props should usually be provided by the individual charts.
-const vegaGlobals: TopLevelSpec = {
+const vegaBase = {
   $schema: "https://vega.github.io/schema/vega-lite/v5.json",
   // width: ...,
   // height: ...,
@@ -53,9 +52,12 @@ const vegaGlobals: TopLevelSpec = {
       fontSize: 12
     },
     range: {
-      category: ["#d35cdb", "#5cdb60", "#dbd55c", "#db5c5c", "#5c5edb", "#dba85c", "#5cdbcc"]
+      category: ["#d35cdb", "#5cdb60", "hsl(57 85% 61% / 1)", "hsl(0 85% 61% / 1)", "#5c5edb", "#dba85c", "#5cdbcc"]
     }
   },
+}
+
+const vegaSimple = merge({}, vegaBase,{
   data: {
     values: [
       // {y: "measurementName", x: value},
@@ -94,12 +96,18 @@ const vegaGlobals: TopLevelSpec = {
       text: { field: "x", type: "quantitative" }
     }
   }]
-}
+})
 
 const mergeDataProps: MergeDataOptions = {
   lang: 'kroki',
   meta: { type: "vegalite" },
-  data: vegaGlobals
+  data: vegaSimple
+}
+
+const vegaStackedProps: MergeDataOptions = {
+  lang: 'kroki',
+  meta: { type: "vegalite", kind: "stacked" },
+  data: vegaBase
 }
 
 // https://astro.build/config
@@ -130,7 +138,7 @@ export default defineConfig({
       },
     },
     remarkPlugins: [
-      [remarkMergeData, mergeDataProps],
+      [remarkMergeData, [mergeDataProps, vegaStackedProps]],
       remarkGfm,
       remarkSmartypants,
       [remarkKroki, {
