@@ -6,13 +6,6 @@ const { isRoot } = Astro.props;
 ---
 
 <header class={isRoot ? "center" : "left"}>
-  {
-    !isRoot && (
-      <a href="/" aria-label="Go back">
-        <BackButton />
-      </a>
-    )
-  }
   <Nav />
 </header>
 
@@ -31,9 +24,5 @@ const { isRoot } = Astro.props;
 
   header.center {
     justify-content: center;
-  }
-
-  a {
-    text-decoration: none;
   }
 </style>

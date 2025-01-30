@@ -1,23 +1,28 @@
 ---
 import ThemeToggleButton from './ThemeToggleButton.svelte';
+const pathname = new URL(Astro.request.url).pathname;
 ---
 
 <style>
   nav {
-    position: absolute;
-    right: 1.5rem;
-
     display: flex;
     flex: 1;
     font-family: var(--font-family-sans);
     font-weight: 700;
     justify-content: flex-end;
+    align-items: center;
     text-transform: uppercase;
     z-index: 1;
+  }
+
+  a {
+    padding-right: 1rem;
   }
 </style>
 
 <nav>
+  {pathname !== '/' && <a href='/'>home</a>}
+  {pathname !== '/blog' && <a href='/blog'>blog</a>}
   <div class="theme-toggle-container">
     <ThemeToggleButton client:load />
   </div>
