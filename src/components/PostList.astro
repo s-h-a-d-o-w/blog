@@ -19,10 +19,11 @@ const { posts } = Astro.props;
       return (
         <>
           {index !== 0 && <hr />}
-          <a href={href} class="post-link">
             <article class="post-item">
               <h2>
-                {post.frontmatter.title}
+                <a href={href}>
+                  {post.frontmatter.title}
+                </a>
               </h2>
               <div
                 set:html={truncateHtml(
@@ -35,7 +36,6 @@ const { posts } = Astro.props;
                 </span>
               </div>
             </article>
-          </a>
         </>
       );
     })
@@ -62,16 +62,5 @@ const { posts } = Astro.props;
     text-align: left;
     text-transform: uppercase;
     margin-right: 16px;
-  }
-
-  .post-link {
-    text-decoration: none;
-    color: inherit;
-    cursor: pointer;
-    display: block;
-  }
-
-  .post-link:hover, .post-link:hover .post-item-date {
-    color: var(--primary-color);
   }
 </style>
