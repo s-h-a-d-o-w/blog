@@ -18,6 +18,11 @@ const pathname = new URL(Astro.request.url).pathname;
   a {
     padding-right: 1rem;
   }
+
+  /* There is a strange offset in this container that I can't find (seems like maybe caused by the astro islands web component in an obscured manner). This is a workaround to fix the vertical alignment with the links next to it. */
+  .theme-toggle-container {
+    margin-bottom: -4px;
+  }
 </style>
 
 <nav>
