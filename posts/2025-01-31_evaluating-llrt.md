@@ -7,7 +7,7 @@ publishDate: 2025-01-31
 
 I recently stumbled across [AWS Labs' LLRT](https://github.com/awslabs/llrt), a lightweight JS engine intended for cloud use, because Node has just grown too much for my liking, and neither bun nor deno are lighter alternatives. LLRT is much smaller, and while there is an impressive benchmark for the latency of a simple database operation available at the top of their README, there is only a vague remark regarding other use cases under [Limitations](https://github.com/awslabs/llrt?tab=readme-ov-file#limitations). Articles I've come across only suspect that it wouldn't do well with computation-intensive tasks.
 
-So I got curious. How bad exactly is the performance with use cases other than what it was made for? 😄
+So I got curious. What *is* the performance like for use cases other than what it was made for? 😄
 
 ## Performance Benchmark
 
