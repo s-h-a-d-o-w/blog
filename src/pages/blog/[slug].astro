@@ -4,6 +4,7 @@ import { truncateHtml } from "../../utils/truncateHtml";
 import { NUM_CHARACTERS_DESCRIPTION } from "../../utils/consts";
 import CopyButtonWrapper from "../../components/CopyButtonWrapper.astro";
 import { getPosts } from "../../utils/getPosts.astro";
+import { stripHtmlTags } from "../../utils/stripHtmlTags";
 
 export async function getStaticPaths() {
   return (await getPosts()).map((post) => {
@@ -17,14 +18,19 @@ export async function getStaticPaths() {
 
 const { Content, frontmatter, compiledContent } = Astro.props.post;
 const { title, publishDate, lastUpdated } = frontmatter;
-const description = truncateHtml(
+const description = stripHtmlTags(truncateHtml(
   compiledContent().slice(0, NUM_CHARACTERS_DESCRIPTION),
-);
+));
 const slug = Astro.props.slug;
 const permalink = `${Astro.site?.href}${slug}`;
 ---
 
-<BaseLayout title={title} description={description} permalink={permalink}>
+<BaseLayout
+  title={title}
+  description={description}
+  permalink={permalink}
+  isArticle
+>
   <header>
     <p>{new Date(publishDate).toLocaleDateString()}</p>
     {
