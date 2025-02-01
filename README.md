@@ -13,4 +13,5 @@ netsh advfirewall firewall add rule name="Astro Dev Server" dir=in action=allow 
 
 ## Dev notes
 
-Don't just kill the terminal in which dev is running. Otherwise, kroki will not shut down. Use Ctrl+C.
+- Don't just kill the terminal in which dev is running. Otherwise, kroki will not shut down. Use Ctrl+C.
+- Updating snapshots on almost every change is annoying but... theoretically, the idea is obviously that usually, only new articles are added and the old ones shouldn't change. Of course, most changes are actually around what the website looks like. I guess I just learn some thing about when to use visual regression tests. Still going to keep them for now.
