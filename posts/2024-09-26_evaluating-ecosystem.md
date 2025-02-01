@@ -124,7 +124,7 @@ I’ll start off with a list of tools and their pros and cons. (Usage numbers li
 
 ## Open Props
 ✅ [Very high satisfaction](https://2023.stateofcss.com/en-US/css-frameworks/).  
-✅ Seems to adhere to a lot of great practices - maybe no surprise given that it was created by [Adam Argyle, who has been a UX Engineer for Google for years](https://www.linkedin.com/in/adamargyle/).
+✅ Seems to adhere to a lot of great practices - maybe no surprise given that it was created by [Adam Argyle, who has been a UX Engineer for Google for years](https://www.linkedin.com/in/adamargyle/).  
 ✅ Offers a guide for how to optimize via PostCSS to only ship the props that are actually used.  
 🤷 Contrary to other things in this list, this just provides design tokens. I only checked it out due to its popularity. I suppose if you want to knock out something alright looking quickly, this can be great.  
 
