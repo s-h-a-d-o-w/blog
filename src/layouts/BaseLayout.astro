@@ -10,12 +10,15 @@ export interface Props {
 
   isArticle?: boolean;
   isRoot?: boolean;
+  slug?: string
+  publishDate?: string
+  lastUpdated?: string
 }
-const { title, description, permalink, isArticle, isRoot } = Astro.props;
+const { title, description, permalink, isArticle, isRoot, slug, publishDate, lastUpdated } = Astro.props;
 ---
 <html lang="en">
 <head>
-  <BaseHead title={title} description={description} permalink={permalink} isArticle={isArticle} />
+  <BaseHead title={title} description={description} permalink={permalink} isArticle={isArticle} slug={slug} publishDate={publishDate} lastUpdated={lastUpdated} />
 </head>
 <body>
   <div class="layout">

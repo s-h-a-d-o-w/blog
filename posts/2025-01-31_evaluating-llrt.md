@@ -1,9 +1,12 @@
 ---
-title: Evaluating LLRT for Non-Standard Use Cases (and an Attempt to Put Node on a Diet)
+title: Benchmarking LLRT with Non-Standard Use Cases (and an Attempt to Put Node on a Diet)
 publishDate: 2025-01-31
+lastUpdated: 2025-02-01
 ---
 
-**Note: As of writing, the LLRT maintainers say that LLRT is to be used for evaluation purposes only!**
+## Versions used: Node v22.11.0, LLRT v0.4.0-beta
+
+**Note: As of writing, the LLRT creators say that LLRT is to be used for evaluation purposes only!**
 
 I recently stumbled across [AWS Labs' LLRT](https://github.com/awslabs/llrt), a lightweight JS engine intended for cloud use, because Node has just grown too much for my liking, and neither bun nor deno are lighter alternatives. LLRT is much smaller, and while there is an impressive benchmark for the latency of a simple database operation available at the top of their README, there is only a vague remark regarding other use cases under [Limitations](https://github.com/awslabs/llrt?tab=readme-ov-file#limitations). Articles I've come across only suspect that it wouldn't do well with computation-intensive tasks.
 

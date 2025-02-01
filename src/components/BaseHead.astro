@@ -2,6 +2,7 @@
 import { ViewTransitions } from 'astro:transitions'
 import '../styles/fonts.css'
 import '../styles/global.scss'
+import { undefined } from 'astro:schema'
 
 export interface Props {
   title: string
@@ -9,10 +10,13 @@ export interface Props {
   permalink: string
 
   isArticle?: boolean
+  slug?: string
+  publishDate?: string
+  lastUpdated?: string
 }
 
-const { title, description, permalink, isArticle } = Astro.props
-const socialUrl = Astro.site?.href + 'assets/social.png'
+const { title, description, permalink, isArticle, slug, publishDate, lastUpdated } = Astro.props
+const ogImageUrl = (slug && Astro.site?.href ? `${Astro.site.href}og/posts/${slug}.png` : undefined) as string | undefined
 ---
 
 <!-- Global Metadata -->
@@ -31,7 +35,19 @@ const socialUrl = Astro.site?.href + 'assets/social.png'
 <meta property="og:url" content={permalink} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content={socialUrl} />
+{isArticle && <>
+    {publishDate && <meta property="article:published_time" content={publishDate} />}
+    {lastUpdated && <meta property="article:modified_time" content={lastUpdated} />}
+    <meta property="article:author" content="https://aop.software" />
+    <meta property="article:section" content="Technology" />
+</>}
+{ogImageUrl && (
+  <>
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200"/>
+    <meta property="og:image:height" content="630"/>
+  </>
+)}
 
 <ViewTransitions />
 
