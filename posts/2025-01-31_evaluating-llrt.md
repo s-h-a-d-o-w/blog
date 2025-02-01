@@ -220,4 +220,4 @@ Alright, low-level languages win at that as well. But if that's just not feasibl
 
 Then again, does that matter if it actually doesn't compute much? Most of the little tools I've created in my spare time run in the background and are mostly idle. And so one can maybe make the case that it's fine to optimize for drive and memory usage there. (But then there's also the fact that LLRT doesn't support a lot of features that are commonly needed for desktop apps—native addons, worker threads, etc.)
 
-So it seems like the LLRT use case solely being computationally inexpensive cloud operations probably won't change. Because there's probably no to very little business value to features that would make it a replacement in a desktop app setting and a 100x computation performance increase seems unlikely.
+So it seems like the LLRT use case solely being computationally inexpensive cloud operations probably won't change. Because a 100x computation performance increase seems unlikely and I suspect that there's no to very little business value to features that would make it a replacement in a desktop app setting.
