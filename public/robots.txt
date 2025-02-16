@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://blog.letit.run/sitemap-index.xml
+Sitemap: https://aop.software/sitemap-index.xml
