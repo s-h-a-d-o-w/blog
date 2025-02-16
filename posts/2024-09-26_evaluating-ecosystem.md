@@ -131,15 +131,16 @@ I’ll start off with a list of tools and their pros and cons. (Usage numbers li
 ## Tailwind/Windi/Unocss
 ✅ [High usage and satisfaction on average](https://2023.stateofcss.com/en-US/css-frameworks/).  
 ✅ RSC support.  
-❌ Memorizing non-standard abbreviations for CSS rules seems like a very bad idea.  
+✅ Great design tokens that are likely responsible for the success. (Although—many other libraries had/have those. One can also combine something like Open Props with a more general styling solution. Also, whipping up a set of custom tokens actually isn't that difficult.)  
 ❌ Huge chains of classes result in awful readability.  
+❌ Memorizing non-standard abbreviations for CSS rules seems like a very bad idea.  
 
 # Others worth mentioning
 
 ## Bun
 
 ⚡ Holy crap, it’s *fast*!  
-❌ Buggy/unstable in all ways that I’ve tried it — as a package manager, a runtime and a test runner.  
+❌ Buggy/unstable in all ways that I’ve tried it—as a package manager, a runtime and a test runner.  
 ❌ Maybe there are different best practices for highly complex native code (I’ve only ever worked on pretty simple things) but if I saw [a TS module like this](https://github.com/oven-sh/bun/blob/main/src/bun.zig) in a project that I work on, I’d sound the alarm. (In case you don’t know what I mean: Individual modules generally shouldn’t contain more than a few hundred lines of code, since the code becomes difficult to read/manage otherwise. At time of writing, this has 3787 lines.)  
 
 # Closing thoughts

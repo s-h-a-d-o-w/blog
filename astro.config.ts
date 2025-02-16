@@ -128,7 +128,7 @@ export default defineConfig({
       }
     }
   },
-  site: process.env.NODE_ENV !== 'production' ? `http://localhost:4321/` : 'https://blog.letit.run/',
+  site: process.env.NODE_ENV !== 'production' ? `http://localhost:4321/` : 'https://aop.software/',
   integrations: [mdx(), svelte(), sitemap()],
   markdown: {
     shikiConfig: {
