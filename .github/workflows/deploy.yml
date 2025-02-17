@@ -24,8 +24,6 @@ jobs:
     - name: Install
       run: |
         pnpm install --prod
-        pnpm install @playwright/test
-        pnpm playwright install --with-deps chromium
         pnpm build
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3

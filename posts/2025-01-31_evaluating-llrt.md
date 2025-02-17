@@ -106,27 +106,18 @@ People are sometimes concerned about memory usage given how huge Node is, even t
   "height": 100,
   "data": {
     "values": [
-      {"runtime": "Windows (Node.js)", "type": "Private", "value": 10.2},
-      {"runtime": "Windows (Node.js)", "type": "Shared", "value": 86.0},
-      {"runtime": "Windows (LLRT)", "type": "Private", "value": 1.9},
-      {"runtime": "Windows (LLRT)", "type": "Shared", "value": 15.5},
-      {"runtime": "WSL (Node.js)", "type": "Private", "value": 43.1},
-      {"runtime": "WSL (Node.js)", "type": "Shared", "value": 34.9},
-      {"runtime": "WSL (LLRT)", "type": "Private", "value": 4.9},
-      {"runtime": "WSL (LLRT)", "type": "Shared", "value": 3.9}
-    ]},
-  "mark": {
-      "type": "bar",
-      "orient": "horizontal",
-      "height": { "band": 0.75 }
-    },
+      {"y": "Windows (Node.js)", "type": "Private", "x": 10.2},
+      {"y": "Windows (Node.js)", "type": "Shared", "x": 86.0},
+      {"y": "Windows (LLRT)", "type": "Private", "x": 1.9},
+      {"y": "Windows (LLRT)", "type": "Shared", "x": 15.5},
+      {"y": "WSL (Node.js)", "type": "Private", "x": 43.1},
+      {"y": "WSL (Node.js)", "type": "Shared", "x": 34.9},
+      {"y": "WSL (LLRT)", "type": "Private", "x": 4.9},
+      {"y": "WSL (LLRT)", "type": "Shared", "x": 3.9}
+    ]
+  },
   "encoding": {
-    "y": {"field": "runtime", "title": "", "axis": { "zindex": 1 }},
-    "x": {"field": "value", "type": "quantitative", "title": "RAM usage (MB)"},
-    "color": {"field": "type", "legend": {
-      "orient": "bottom",
-      "title": ""
-    }}
+    "x": {"title": "RAM usage (MB)"}
   }
 }
 ```

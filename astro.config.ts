@@ -65,57 +65,79 @@ const vegaBase = {
   },
 }
 
-const vegaSimple = merge({}, vegaBase,{
-  data: {
-    values: [
-      // {y: "measurementName", x: value},
-    ]
-  },
-  layer: [{
+const vegaSimpleChart: MergeDataOptions = {
+  lang: 'kroki',
+  meta: { type: "vegalite" },
+  data: merge({}, vegaBase, {
+    data: {
+      values: [
+        // {y: "measurementName", x: value},
+      ]
+    },
+    layer: [{
+      mark: {
+        type: "bar", orient: "horizontal", height: { band: 0.75 }
+      },
+      encoding: {
+        y: {
+          field: "y",
+          type: "nominal",
+          title: "",
+          // See: https://github.com/vega/vega-lite/issues/9514#issuecomment-2613242331
+          axis: { zindex: 1 }
+        },
+        x: {
+          field: "x",
+          type: "quantitative",
+          title: "" // overwrite for a label at the bottom!
+        },
+        color: {
+          field: "y",
+          type: "nominal",
+          legend: null
+        }
+      }
+    }, {
+      mark: {
+        type: "text", align: "left", dx: 3
+      },
+      encoding: {
+        y: { field: "y", type: "nominal" },
+        x: { field: "x", type: "quantitative" },
+        text: { field: "x", type: "quantitative" }
+      }
+    }]
+  })
+}
+
+const vegaStackedChart: MergeDataOptions = {
+  lang: 'kroki',
+  meta: { type: "vegalite", kind: "stacked" },
+  data: merge({}, vegaBase, {
+    data: {
+      values: [
+        // {y: "measurementName", type: "type", x: value},
+      ]
+    },
     mark: {
-      type: "bar",
-      orient: "horizontal",
-      height: { band: 0.75 }
+      type: "bar", orient: "horizontal", height: { band: 0.75 }
     },
     encoding: {
-      y: {
-        field: "y",
-        type: "nominal",
-        title: "",
-        // See: https://github.com/vega/vega-lite/issues/9514#issuecomment-2613242331
-        axis: { zindex: 1 }
-      },
+      y: { field: "y", title: "", axis: { zindex: 1 } },
       x: {
         field: "x",
         type: "quantitative",
         title: "" // overwrite for a label at the bottom!
       },
       color: {
-        field: "y",
-        type: "nominal",
-        legend: null
+        field: "type",
+        legend: {
+          orient: "bottom",
+          title: ""
+        }
       }
     }
-  }, {
-    mark: { type: "text", align: "left", dx: 3 },
-    encoding: {
-      y: { field: "y", type: "nominal" },
-      x: { field: "x", type: "quantitative" },
-      text: { field: "x", type: "quantitative" }
-    }
-  }]
-})
-
-const mergeDataProps: MergeDataOptions = {
-  lang: 'kroki',
-  meta: { type: "vegalite" },
-  data: vegaSimple
-}
-
-const vegaStackedProps: MergeDataOptions = {
-  lang: 'kroki',
-  meta: { type: "vegalite", kind: "stacked" },
-  data: vegaBase
+  })
 }
 
 // https://astro.build/config
@@ -146,7 +168,7 @@ export default defineConfig({
       },
     },
     remarkPlugins: [
-      [remarkMergeData, [mergeDataProps, vegaStackedProps]],
+      [remarkMergeData, [vegaSimpleChart, vegaStackedChart]],
       remarkGfm,
       remarkSmartypants,
       [remarkKroki, {
