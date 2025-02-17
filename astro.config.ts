@@ -52,7 +52,15 @@ const vegaBase = {
       fontSize: 12
     },
     range: {
-      category: ["#d35cdb", "#5cdb60", "hsl(57 85% 61% / 1)", "hsl(0 85% 61% / 1)", "#5c5edb", "#dba85c", "#5cdbcc"]
+      category: [
+        "hsl(298 67% 61% / 1)", // #d35cdb
+        "hsl(123 67% 61% / 1)", // #5cdb60
+        "hsl(57 85% 61% / 1)",  // #e6db4d
+        "hsl(0 85% 61% / 1)",   // #e64d4d
+        "hsl(239 67% 61% / 1)", // #5c5edb
+        "hsl(35 67% 61% / 1)",  // #dba85c
+        "hsl(174 67% 61% / 1)"  // #5cdbcc
+      ]
     }
   },
 }
