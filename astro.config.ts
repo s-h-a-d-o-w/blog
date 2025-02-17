@@ -173,7 +173,6 @@ export default defineConfig({
       remarkSmartypants,
       [remarkKroki, {
         server: 'http://localhost:8000',
-        alias: ['plantuml'],
         output: "inline-svg"
       }],
     ],
