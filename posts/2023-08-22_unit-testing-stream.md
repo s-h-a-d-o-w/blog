@@ -9,7 +9,8 @@ Oh, and ChatGPT suggested two different approaches (I think one of them involved
 
 But then, I randomly stumbled across…
 
-The solution
+## The solution
+
 web-streams-polyfill! From node 18 onwards, there’s an experimental native implementation. And so I will use that in the example below. But contrary to what the docs say, it’s not available globally.
 
 This provides the `ReadableStream` with which you can create a factory function that returns streams that you will eventually use for mocking. The chunks in the following example mirror what the OpenAI API returns (At least my backend colleagues at the time told me that it would always send an empty first chunk. And that’s what I received…).

@@ -24,7 +24,7 @@
     "lodash-es": "^4.17.21",
     "rehype-external-links": "^3.0.0",
     "rehype-rewrite": "^4.0.2",
-    "remark-gfm": "^4.0.0",
+    "remark-gfm": "^4.0.1",
     "remark-kroki": "^0.3.7",
     "remark-merge-data": "^1.0.12",
     "remark-smartypants": "^2.0.0",
@@ -40,5 +40,12 @@
     "serve": "^14.2.4",
     "tsx": "^4.19.2"
   },
-  "packageManager": "pnpm@10.2.0+sha512.0d27364e0139c6aadeed65ada153135e0ca96c8da42123bd50047f961339dc7a758fc2e944b428f52be570d1bd3372455c1c65fa2e7aa0bfbf931190f9552001"
+  "packageManager": "pnpm@10.2.0+sha512.0d27364e0139c6aadeed65ada153135e0ca96c8da42123bd50047f961339dc7a758fc2e944b428f52be570d1bd3372455c1c65fa2e7aa0bfbf931190f9552001",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@parcel/watcher",
+      "esbuild",
+      "sharp"
+    ]
+  }
 }

@@ -27,7 +27,7 @@ const pathname = new URL(Astro.request.url).pathname;
 
 <nav>
   {pathname !== '/' && <a href='/'>home</a>}
-  {pathname !== '/blog' && <a href='/blog'>blog</a>}
+  {pathname.replaceAll("/", "") !== 'blog' && <a href='/blog'>blog</a>}
   <div class="theme-toggle-container">
     <ThemeToggleButton client:load />
   </div>

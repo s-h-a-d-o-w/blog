@@ -4,7 +4,7 @@ publishDate: 2025-01-31
 lastUpdated: 2025-02-01
 ---
 
-## Versions used: Node v22.11.0, LLRT v0.4.0-beta
+### Versions used: Node v22.11.0, LLRT v0.4.0-beta
 
 **Note: As of writing, the LLRT creators say that LLRT is to be used for evaluation purposes only!**
 

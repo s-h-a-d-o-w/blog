@@ -24,7 +24,6 @@ const rewriteKrokiSVG: RehypeRewriteOptions = {
           node.children.splice(index, 1)
         }
       })
-
     }
   }
 }
