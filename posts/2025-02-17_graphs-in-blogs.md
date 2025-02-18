@@ -3,7 +3,7 @@ title: Create beautiful (and somewhat responsive and accessible) graphs with jus
 publishDate: 2025-02-17
 ---
 
-If your setup already uses or at least supports remark and rehype, this is how you'll be able to create a bar chart like in my article ...:
+If your setup already uses or at least supports remark and rehype, this is how you'll be able to create a bar chart like in my article [Benchmarking LLRT with Non-Standard Use Cases (and an Attempt to Put Node on a Diet)](https://aop.software/blog/2025-01-31_evaluating-llrt/):
 
 ````json
 ```kroki type=vegalite
