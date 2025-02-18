@@ -28,6 +28,7 @@
     "remark-kroki": "^0.3.7",
     "remark-merge-data": "^1.0.12",
     "remark-smartypants": "^2.0.0",
+    "rimraf": "^6.0.1",
     "sass": "^1.83.4",
     "typescript": "^5.6.3",
     "vega-lite": "^5.23.0",
@@ -36,7 +37,6 @@
   "devDependencies": {
     "@types/node": "^22.7.4",
     "concurrently": "^9.1.2",
-    "rimraf": "^6.0.1",
     "serve": "^14.2.4",
     "tsx": "^4.19.2"
   },
