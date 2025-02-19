@@ -204,12 +204,6 @@ td {
   width: 100%;
 }
 
-// .content h1 {
-//   font-family: var(--font-family-serif);
-//   font-size: 2.2em;
-//   margin: 1em 0 0 0;
-// }
-
 .theme-toggle {
   display: inline-flex;
   align-items: center;
@@ -365,5 +359,28 @@ html.theme-dark .kroki-inline-svg {
 
   .role-legend .background {
     display: none;
+  }
+}
+
+.anchor-link {
+  opacity: 0;
+  margin-left: 0.5rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  display: inline-flex;
+  align-items: center;
+
+  &:hover .anchor-link {
+    opacity: 1;
+    line-height: 0;
+  }
+}
+
+.anchor-icon {
+  color: var(--text-secondary);
+
+  &:hover {
+    color: var(--primary-color);
   }
 }
