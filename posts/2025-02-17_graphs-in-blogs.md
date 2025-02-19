@@ -100,7 +100,7 @@ Just install `remark-merge-data remark-kroki` and add them to your remark/rehype
 remarkPlugins: [
   [remarkMergeData, [vegaSimpleChart]],
   [remarkKroki, {
-    server: 'http://localhost:8000',
+    server: "http://localhost:8000",
     output: "inline-svg"
   }],
 ],
@@ -108,7 +108,7 @@ remarkPlugins: [
 
 ## Actually rendering the graphs
 
-The rendering is done by the kroki server that you just run during dev or building.
+The rendering is done by the [kroki server](https://github.com/yuzutech/kroki) that you just run during dev or building.
 
 Keep in mind that whatever font you use has to exist on the server and client! One option is to add custom fonts like I'm showing in a `Dockerfile` below or maybe picking a [modern font stack](https://github.com/system-fonts/modern-font-stacks) where the overall text width is similar across different platforms.
 
