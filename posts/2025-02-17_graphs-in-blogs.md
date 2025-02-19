@@ -1,5 +1,5 @@
 ---
-title: Create beautiful (and somewhat responsive and accessible) graphs with just JSON/YAML for your markdown blog
+title: Create beautiful (and somewhat responsive and accessible) graphs for your markdown blog with just JSON/YAML
 publishDate: 2025-02-18
 lastUpdated: 2025-02-19
 ---
