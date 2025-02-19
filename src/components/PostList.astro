@@ -15,6 +15,7 @@ const { posts } = Astro.props;
   {
     posts.map((post, index) => {
       const href = `/blog/${post.file.split("/").pop()?.split(".").shift()}`;
+      const contentWithoutAnchorLinks = post.compiledContent().replace(/<a class="anchor-link"[^>]*>.*?<\/a>/g, '');
 
       return (
         <>
@@ -27,7 +28,7 @@ const { posts } = Astro.props;
               </h2>
               <div
                 set:html={truncateHtml(
-                  post.compiledContent().slice(0, NUM_CHARACTERS_DESCRIPTION),
+                  contentWithoutAnchorLinks.slice(0, NUM_CHARACTERS_DESCRIPTION),
                 )}
               />
               <div class="post-item-footer">
