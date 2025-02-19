@@ -1,6 +1,7 @@
 ---
 title: Create beautiful (and somewhat responsive and accessible) graphs with just JSON/YAML for your markdown blog
-publishDate: 2025-02-17
+publishDate: 2025-02-18
+lastUpdated: 2025-02-19
 ---
 
 If your setup already uses or at least supports remark and rehype, this is how you'll be able to create a bar chart like in my article [Benchmarking LLRT with Non-Standard Use Cases (and an Attempt to Put Node on a Diet)](https://aop.software/blog/2025-01-31_evaluating-llrt/):
@@ -234,4 +235,5 @@ Unless you want to replicate my exact same setup (which is actually slightly mor
 
 ## References
 
-- ["Remark (and Rehype) all the things"](https://jordemort.dev/blog/remark-all-the-things/) by [@jordemort](https://github.com/jordemort) - This article got me started off on my journey, explains the `rehype-rewrite` workflow and discusses some other topics.
+- [`rehype-mermaid`](https://github.com/remcohaszing/rehype-mermaid) - The first thing I tried. Limited to mermaid graphs but no need to run a server and configuration can be shared through a global config object. (There's also [`remark-mermaidjs`](https://github.com/remcohaszing/remark-mermaidjs) in case you need that.)
+- ["Remark (and Rehype) all the things"](https://jordemort.dev/blog/remark-all-the-things/) by [@jordemort](https://github.com/jordemort) - Made me aware of kroki, explains the `rehype-rewrite` workflow and discusses some other topics.
