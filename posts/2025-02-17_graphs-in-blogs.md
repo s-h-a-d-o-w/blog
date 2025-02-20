@@ -1,7 +1,7 @@
 ---
-title: Create beautiful (and somewhat responsive and accessible) graphs for your markdown blog with just JSON/YAML
+title: Create beautiful (and somewhat responsive and accessible) charts/graphs for your markdown blog with just JSON/YAML
 publishDate: 2025-02-18
-lastUpdated: 2025-02-19
+lastUpdated: 2025-02-20
 ---
 
 If your setup already uses or at least supports remark and rehype, this is how you'll be able to create a bar chart like in my article [Benchmarking LLRT with Non-Standard Use Cases (and an Attempt to Put Node on a Diet)](https://aop.software/blog/2025-01-31_evaluating-llrt/):
@@ -29,9 +29,9 @@ If your setup already uses or at least supports remark and rehype, this is how y
 
 It does require a bit of config though. Let's start at the end. Because maybe you're wondering "Is that really everything?" Yeah not quite.
 
-## Shared graph config
+## Shared config
 
-Unless your graphs are all one-offs, you'll also need to declare some shared properties for how your graphs should look like. Which may look something like this (depending on your IDE, the hex values provide a preview): 
+Unless your charts, graphs or diagrams are all one-offs, you'll have shared properties. Which may look something like this (the hex values in the comments are for color preview in IDEs): 
 
 ```ts
 const vegaSimpleChart = {
@@ -89,13 +89,13 @@ const vegaSimpleChart = {
 }
 ```
 
-I would recommend not using relative units such as `rem`, since with graphs, there's usually not a lot of tolerance for scaling text after the fact.
+I would recommend not using relative units such as `rem`, since there's usually not a lot of tolerance for scaling text after the fact. (See also "Responsiveness" below.)
 
 If this isn't too much for you, the rest isn't as big of a deal in my opinion.
 
-## Wiring up the remark/rehype plugins
+## Wiring up the remark plugins
 
-Just install `remark-merge-data remark-kroki` and add them to your remark/rehype setup (if you've e.g. set up your blog using astro, it'll probably already be in your astro config) like so:
+Just install `remark-merge-data remark-kroki` and add them to your remark setup (if you've e.g. set up your blog using astro, it'll probably already be in your astro config) like so:
 
 ```ts
 remarkPlugins: [
@@ -107,7 +107,7 @@ remarkPlugins: [
 ],
 ```
 
-## Actually rendering the graphs
+## Actually rendering things
 
 The rendering is done by the [kroki server](https://github.com/yuzutech/kroki) that you just run during dev or building.
 
@@ -151,7 +151,7 @@ And that's it on a base level.
 
 ## Responsiveness
 
-While there isn't much leeway in terms of scaling, I found that I was able to get away with the following. It's key to have kroki render at the larger font size that used for mobile and then scale the font down on larger devices, since text might "grow" to overlap each other or parts of the graph otherwise.
+While there isn't much leeway in terms of scaling, I found that I was able to get away with the following. It's key to have kroki render at the larger font size that used for mobile and then scale the font down on larger devices. Otherwise, text might "grow" to overlap each other or parts of the graph.
 
 ```css
 .kroki-inline-svg {
