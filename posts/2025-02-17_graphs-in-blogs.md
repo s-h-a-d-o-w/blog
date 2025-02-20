@@ -29,7 +29,7 @@ If your setup already uses or at least supports remark and rehype, this is how y
 
 It does require a bit of config though. Let's start at the end. Because maybe you're wondering "Is that really everything?" Yeah not quite.
 
-## Shared chart config
+## Shared config
 
 Unless your charts, graphs or diagrams are all one-offs, you'll have shared properties. Which may look something like this (the hex values in the comments are for color preview in IDEs): 
 
@@ -44,7 +44,7 @@ const vegaSimpleChart = {
       offset: 16
     },
     axis: {
-      labelPadding: 8
+      labelPadding: 8,
       labelFontSize: 12,
       titleFontSize: 12,
       titlePadding: 8
