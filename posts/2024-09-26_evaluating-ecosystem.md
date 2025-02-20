@@ -1,8 +1,10 @@
 ---
 title: Evaluating React framework/styling options—it's not looking great currently
 publishDate: 2024-09-26
-lastUpdated: 2024-10-05
+lastUpdated: 2025-02-20
 ---
+
+> Update 2025-02-20: Back when I researched this, Remix was still frequently mentioned, even though it was already announced in May 2024 that it would cease to exist. And it's recently been removed from the [React docs](https://react.dev/learn/creating-a-react-app#full-stack-frameworks).
 
 I would like to preface this by saying that I'm sure all the people who have worked very hard on the following projects only mean well. That said, people 5-10 years ago also worked very hard and meant well, yet they gave us things like React, TypeScript, the early Next.js, styled-components, emotion, jest, playwright, testing library, etc.—all of which were generally robust.
 
