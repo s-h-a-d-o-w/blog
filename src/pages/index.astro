@@ -1,8 +1,9 @@
 ---
-import { Image } from "astro:assets";
+import { Picture } from "astro:assets";
 import PostList from "../components/PostList.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getPosts } from "../utils/getPosts.astro";
+import portrait from "../assets/portrait.jpg";
 
 const title = "Andreas Opferkuch";
 const description = "Social links and blog, available for freelance gigs";
@@ -65,11 +66,10 @@ const recentPosts = (await getPosts()).slice(0, 3);
     </div>
 
     <div class="photo">
-      <Image
-        src="/assets/portrait.jpg"
-        alt="portrait photo"
-        width={667}
-        height={667}
+      <Picture
+        src={portrait}
+        formats={["avif", "webp"]}
+        alt="Headshot of Andreas Opferkuch"
         style={{ borderRadius: "20px", marginTop: "4rem" }}
       />
     </div>

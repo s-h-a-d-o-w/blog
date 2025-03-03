@@ -1,5 +1,5 @@
 ---
-import { ViewTransitions } from 'astro:transitions'
+import { ClientRouter } from 'astro:transitions'
 import '../styles/fonts.css'
 import '../styles/global.scss'
 
@@ -48,7 +48,7 @@ const ogImageUrl = (slug && Astro.site?.href ? `${Astro.site.href}og/posts/${slu
   </>
 )}
 
-<ViewTransitions />
+<ClientRouter />
 
 <!-- This is intentionally inlined to avoid FOUC -->
 <script is:inline>

@@ -2,6 +2,8 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getPosts } from "../../utils/getPosts.astro";
 import PostList from "../../components/PostList.astro";
+import { Picture } from "astro:assets";
+import portrait from "../../assets/portrait.jpg";
 
 const title = "Frontend, TS and Stuff";
 const description =
@@ -22,8 +24,9 @@ let allPosts = await getPosts();
     <div class="subtitle">
       Infrequent, irregular thoughts by{" "}
       <a href="/">
-        <img
-          src="https://avatars.githubusercontent.com/u/16936908?v=4"
+        <Picture
+          src={portrait}
+          formats={["avif", "webp"]}
           alt="Headshot of Andreas Opferkuch"
         />
       </a>

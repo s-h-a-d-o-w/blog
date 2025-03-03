@@ -3,11 +3,6 @@ import { NUM_CHARACTERS_DESCRIPTION } from "./consts";
 export function truncateHtml(html: string): string {
   const doInsertEllipsis = html.length === NUM_CHARACTERS_DESCRIPTION
 
-  // We have to add a </p> in case the first thing is a long paragraph. Otherwise, we would get an empty description.
-  // if (html.includes("<p>") && !html.includes("</p>")) {
-  //   return `${html}${doInsertEllipsis ? ' ...' : ''}</p>`
-  // }
-
   // Remove first <p> if it's never closed
   if (html.includes("<p>") && !html.includes("</p>")) {
     html=html.substring(3)
