@@ -1,3 +1,4 @@
+.astro
 *.log
 
 # WSL garbage

@@ -3,9 +3,10 @@ import type { MarkdownInstance } from "astro";
 import type { FrontMatter } from "../types";
 
 export async function getPosts() {
-  const allPosts = (await Astro.glob(
-    "../../posts/*.md",
-  )) as MarkdownInstance<FrontMatter>[];
+  const allPosts = Object.values(
+    import.meta.glob<MarkdownInstance<FrontMatter>>("../../posts/*.md", { eager: true })
+  );
+
   return allPosts
     .toSorted(
       (a, b) =>

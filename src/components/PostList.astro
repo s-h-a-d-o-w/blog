@@ -13,9 +13,9 @@ const { posts } = Astro.props;
 
 <div class="article-container">
   {
-    posts.map((post, index) => {
+    posts.map(async (post, index) => {
       const href = `/blog/${post.file.split("/").pop()?.split(".").shift()}`;
-      const contentWithoutAnchorLinks = post.compiledContent().replace(/<a class="anchor-link"[^>]*>.*?<\/a>/g, '');
+      const contentWithoutAnchorLinks = (await post.compiledContent()).replace(/<a class="anchor-link"[^>]*>.*?<\/a>/g, '');
 
       return (
         <>

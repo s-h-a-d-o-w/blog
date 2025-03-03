@@ -4,7 +4,7 @@ import type { FrontMatter } from '../../types';
 
 export const { getStaticPaths, GET } = OGImageRoute({
   param: 'route',
-  pages: await import.meta.glob('/posts/*.md', { eager: true }),
+  pages: import.meta.glob('/posts/*.md', { eager: true }),
   getImageOptions: (_, { frontmatter: { title } }: MarkdownInstance<FrontMatter>) => {
     return {
       title: '@aop.software',
