@@ -83,6 +83,7 @@ const permalink = `${Astro.site?.href}${slug}`;
     let copyButton = document.createElement("button");
     copyButton.className = "copy-code";
     copyButton.innerHTML = copyButtonIcon;
+    copyButton.setAttribute("aria-label", "Copy code");
     copyButton.addEventListener("click", async () => {
       await copyCode(preBlock, copyButton);
     });

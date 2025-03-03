@@ -183,7 +183,8 @@ export default defineConfig({
         behavior: "append",
         properties: {
           className: ["anchor-link"],
-          "aria-hidden": "true"
+          "aria-hidden": "true",
+          "tabindex": "-1"
         },
         content: {
           type: "element",
