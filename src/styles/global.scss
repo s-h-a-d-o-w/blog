@@ -215,8 +215,8 @@ td {
 }
 
 .theme-toggle>label:focus-within {
-  outline: 2px solid transparent;
-  box-shadow: 0 0 0 0.08em var(--theme-accent), 0 0 0 0.12em white;
+  outline: -webkit-focus-ring-color auto 1px;
+  outline: 1px auto var(--text-main);
 }
 
 .theme-toggle>label {
