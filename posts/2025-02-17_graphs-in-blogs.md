@@ -1,13 +1,13 @@
 ---
 title: Create beautiful (and somewhat responsive and accessible) charts/graphs for your markdown blog with just JSON/YAML
 publishDate: 2025-02-18
-lastUpdated: 2025-02-20
+lastUpdated: 2025-03-22
 ---
 
 If your setup already uses or at least supports remark and rehype, this is how you'll be able to create a bar chart like in my article [Benchmarking LLRT with Non-Standard Use Cases (and an Attempt to Put Node on a Diet)](https://aop.software/blog/2025-01-31_evaluating-llrt/):
 
 ````json
-```kroki type=vegalite
+```kroki type=vega-lite
 {
   "width": 220,
   "height": 100,
@@ -178,9 +178,9 @@ While there isn't much leeway in terms of scaling, I found that I was able to ge
 
 ## Accessibility
 
-The following experiences are based on my vegalite bar charts but the concepts probably apply to charts in general.
+The following experiences are based on my vega-lite bar charts but the concepts probably apply to charts in general.
 
-**⚠️ If the order is important when reading your graph, watch out whether things are rendered in the order that you declared them! For example, vegalite sorts them before rendering. But one can override the order by declaring a custom sort order in the axis encoding.**
+**⚠️ If the order is important when reading your graph, watch out whether things are rendered in the order that you declared them! For example, vega-lite sorts them alphabetically by default. But one can e.g. disable that by declaring `sort: null` on the axis encoding.**
 
 As I had to realize, accessible graphs are difficult. It's not like you can just highlight or hover the graph and expect the screen reader to simply read the text elements (which also depends on how a certain graphing engine renders things). Out of the box, the behavior for the graphs in the aforementioned article is as follows:
 
@@ -231,7 +231,7 @@ const rewriteKrokiSVG: RehypeRewriteOptions = {
 
 ### Prototyping
 
-Unless you want to replicate my exact same setup (which is actually slightly more elaborate than what I've described here since I also used a stacked bar chart - you can see all of it [here](https://github.com/s-h-a-d-o-w/blog/blob/master/astro.config.ts)), at least for vegalite, I'd strongly recommend a combination of AI, [their excellent examples](https://vega.github.io/vega-lite/examples/) and [their editor](https://vega.github.io/editor/). Because vega is a bit obscure and the editor lets you easily validate whether AI hallucinates.
+Unless you want to replicate my exact same setup (which is actually slightly more elaborate than what I've described here since I also used a stacked bar chart - you can see all of it [here](https://github.com/s-h-a-d-o-w/blog/blob/master/astro.config.ts)), at least for vega-lite, I'd strongly recommend a combination of AI, [their excellent examples](https://vega.github.io/vega-lite/examples/) and [their editor](https://vega.github.io/editor/). Because vega is a bit obscure and the editor lets you easily validate whether AI hallucinates.
 
 ## References
 

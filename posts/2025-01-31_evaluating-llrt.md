@@ -108,10 +108,10 @@ People are sometimes concerned about memory usage given how huge Node is, even t
     "values": [
       {"y": "Windows (Node.js)", "type": "Private", "x": 10.2},
       {"y": "Windows (Node.js)", "type": "Shared", "x": 86.0},
-      {"y": "Windows (LLRT)", "type": "Private", "x": 1.9},
-      {"y": "Windows (LLRT)", "type": "Shared", "x": 15.5},
       {"y": "WSL (Node.js)", "type": "Private", "x": 43.1},
       {"y": "WSL (Node.js)", "type": "Shared", "x": 34.9},
+      {"y": "Windows (LLRT)", "type": "Private", "x": 1.9},
+      {"y": "Windows (LLRT)", "type": "Shared", "x": 15.5},
       {"y": "WSL (LLRT)", "type": "Private", "x": 4.9},
       {"y": "WSL (LLRT)", "type": "Shared", "x": 3.9}
     ]

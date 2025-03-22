@@ -84,6 +84,7 @@ const vegaSimpleChart: MergeDataOptions = {
           field: "y",
           type: "nominal",
           title: "",
+          sort: null,
           // See: https://github.com/vega/vega-lite/issues/9514#issuecomment-2613242331
           axis: { zindex: 1 }
         },
@@ -103,7 +104,7 @@ const vegaSimpleChart: MergeDataOptions = {
         type: "text", align: "left", dx: 3
       },
       encoding: {
-        y: { field: "y", type: "nominal" },
+        y: { field: "y", type: "nominal", sort: null },
         x: { field: "x", type: "quantitative" },
         text: { field: "x", type: "quantitative" }
       }
@@ -124,7 +125,7 @@ const vegaStackedChart: MergeDataOptions = {
       type: "bar", orient: "horizontal", height: { band: 0.75 }
     },
     encoding: {
-      y: { field: "y", title: "", axis: { zindex: 1 } },
+      y: { field: "y", title: "", axis: { zindex: 1 }, sort: null },
       x: {
         field: "x",
         type: "quantitative",
