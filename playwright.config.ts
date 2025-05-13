@@ -45,5 +45,6 @@ export default defineConfig({
   webServer: {
     command: 'pnpm start',
     url: BASE_URL,
+    timeout: 3 * 60 * 1000, // 3 minutes - github action runners are slow these days
   },
 });
