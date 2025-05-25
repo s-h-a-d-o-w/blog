@@ -3,7 +3,7 @@ title: Moving beyond Cursor for more efficiency? (An AI tools comparison)
 publishDate: 2025-05-10
 ---
 
-Like [my previous article related to this](2025-04-08_benchmarking-ai-tools), where I benchmarked codebase search speed, this isn't suitable for vibe coders. These articles were prompted by Cursor's increasing dismantling of non-agent workflows. This time around, I will cover the overall experience.
+Like [my previous article related to this](/blog/2025-04-08_benchmarking-ai-tools), where I benchmarked codebase search speed, this isn't suitable for vibe coders. These articles were prompted by Cursor's increasing dismantling of non-agent workflows. This time around, I will cover the overall experience.
 
 Spoiler: I still think that nothing can beat Cursor at autocomplete for the time being.
 
