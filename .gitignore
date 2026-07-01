@@ -1,4 +1,5 @@
 .astro
+.pnpm-store
 *.log
 
 # WSL garbage
