@@ -174,7 +174,7 @@ export default defineConfig({
       remarkGfm,
       remarkSmartypants,
       [remarkKroki, {
-        server: 'http://localhost:8000',
+        server: process.env.KROKI_SERVER ?? 'http://localhost:8000',
         output: "inline-svg"
       }],
     ],

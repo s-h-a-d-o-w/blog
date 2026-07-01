@@ -1,7 +1,15 @@
 {
   "image": "mcr.microsoft.com/devcontainers/javascript-node:24",
 
+  "runArgs": ["--add-host=host.docker.internal:host-gateway"],
+  "remoteEnv": {
+    "KROKI_SERVER": "http://host.docker.internal:8000"
+  },
+
   "features": {
-    "ghcr.io/s-h-a-d-o-w/devcontainers-features/js-k8s": {}
+    "ghcr.io/s-h-a-d-o-w/devcontainers-features/js-k8s": {},
+    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
+      "moby": false
+    }
   }
 }
