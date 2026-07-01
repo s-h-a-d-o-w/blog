@@ -24,8 +24,8 @@ importers:
         specifier: ^7.0.9
         version: 7.0.9(@types/node@22.13.8)(astro@5.6.1(@types/node@22.13.8)(rollup@4.34.9)(sass@1.85.1)(tsx@4.19.3)(typescript@5.8.2)(yaml@2.7.0))(sass@1.85.1)(svelte@5.20.5)(tsx@4.19.3)(typescript@5.8.2)(yaml@2.7.0)
       '@playwright/test':
-        specifier: ^1.50.1
-        version: 1.50.1
+        specifier: ^1.61.1
+        version: 1.61.1
       astro:
         specifier: ^5.6.1
         version: 5.6.1(@types/node@22.13.8)(rollup@4.34.9)(sass@1.85.1)(tsx@4.19.3)(typescript@5.8.2)(yaml@2.7.0)
@@ -600,8 +600,8 @@ packages:
     resolution: {integrity: sha512-dfUnCxiN9H4ap84DvD2ubjw+3vUNpstxa0TneY/Paat8a3R4uQZDLSvWjmznAY/DoahqTHl9V46HF/Zs3F29pg==}
     engines: {node: '>= 10.0.0'}
 
-  '@playwright/test@1.50.1':
-    resolution: {integrity: sha512-Jii3aBg+CEDpgnuDxEp/h7BimHcUTDlpEtce89xEumlJ5ef2hqepZ+PWp1DDpYC/VO9fmWVI1IlEaoI5fK9FXQ==}
+  '@playwright/test@1.61.1':
+    resolution: {integrity: sha512-8nKv6+0RJSL9FE4jYOEGXnPeM/Hg12qZpmqzZjRh3qM0Y7c3z1mrOTfFLids72RDQYVh9WpLEfR5WdpNX4fkig==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -2099,13 +2099,13 @@ packages:
     resolution: {integrity: sha512-M7BAV6Rlcy5u+m6oPhAPFgJTzAioX/6B0DxyvDlo9l8+T3nLKbrczg2WLUyzd45L8RqfUMyGPzekbMvX2Ldkwg==}
     engines: {node: '>=12'}
 
-  playwright-core@1.50.1:
-    resolution: {integrity: sha512-ra9fsNWayuYumt+NiM069M6OkcRb1FZSK8bgi66AtpFoWkg2+y0bJSNmkFrWhMbEBbVKC/EruAHH3g0zmtwGmQ==}
+  playwright-core@1.61.1:
+    resolution: {integrity: sha512-h7Qlt6m4REp25qvIdvbDtVmD4LqVXfpRxhORv9L0jzETM05p4fuPJ3dKyuSXQxDSbXnmS79HAgi9589lGSpLkg==}
     engines: {node: '>=18'}
     hasBin: true
 
-  playwright@1.50.1:
-    resolution: {integrity: sha512-G8rwsOQJ63XG6BbKj2w5rHeavFjy5zynBA9zsJMMtBoe/Uf757oG12NXz6e6OirF7RCrTVAKFXbLmn1RbL7Qaw==}
+  playwright@1.61.1:
+    resolution: {integrity: sha512-DWnY5o3YbLWK4GovuAVwpqL+1VwGNdUGrRr++8j8PtQQzvAVZUIMjKQ90fY689sEJZJBbZVw1rXaOKSTitkzPQ==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -3591,9 +3591,9 @@ snapshots:
       '@parcel/watcher-win32-x64': 2.5.1
     optional: true
 
-  '@playwright/test@1.50.1':
+  '@playwright/test@1.61.1':
     dependencies:
-      playwright: 1.50.1
+      playwright: 1.61.1
 
   '@rollup/pluginutils@5.1.4(rollup@4.34.9)':
     dependencies:
@@ -5483,11 +5483,11 @@ snapshots:
 
   picomatch@4.0.2: {}
 
-  playwright-core@1.50.1: {}
+  playwright-core@1.61.1: {}
 
-  playwright@1.50.1:
+  playwright@1.61.1:
     dependencies:
-      playwright-core: 1.50.1
+      playwright-core: 1.61.1
     optionalDependencies:
       fsevents: 2.3.2
 
