@@ -33,6 +33,7 @@
     "remark-smartypants": "^2.1.0",
     "rimraf": "^6.0.1",
     "sass": "^1.85.1",
+    "sharp": "^0.35.2",
     "svelte": "^5.20.5",
     "typescript": "^5.8.2",
     "vega-lite": "^5.23.0",
