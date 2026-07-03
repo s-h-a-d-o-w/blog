@@ -26,11 +26,13 @@ Simplest is copy/pasting variations of it in all of your projects. Like e.g.:
 }
 ```
 
-Then just open/reopen that workspace in the IDE and it'll ask whether you want to reopen it in the container. Actually, **the very first time**, it'll ask you to install the dev container extension that makes everything possible. Once you've opened a project in a devcontainer, it'll show up in the recents with *[Dev Container]* and the devcontainer also isn't rebuilt every time. So, after the initial building, it opens in just a few seconds.
+Then just open/reopen that workspace in the IDE and it'll ask whether you want to reopen it in the container. Actually, **the very first time**, it'll ask you to install the dev container extension that makes everything possible.
+
+Once you've opened a project in a devcontainer, it'll show up in the recents with *[Dev Container]*. The devcontainer also isn't rebuilt every time. After the initial building, it opens in just a few seconds.
 
 ## More than just a base image
 
-A slightly more elaborate example where *pulumi*, *kubectl* and *direnv* get installed too and an init script for customizing the shell is run:
+A slightly more elaborate example where *pulumi*, *kubectl* and *direnv* are installed too and an init script for customizing the shell is run:
 ```json
 {
   "image": "mcr.microsoft.com/devcontainers/javascript-node:24",
@@ -59,6 +61,8 @@ You can just put most declarations into a file in a feature repo (like [mine her
   }
 }
 ```
+
+Simply bump the version in the feature json file as you make changes and then trigger the manual github workflow that publishes the necessary container to ghcr.
 
 ## Basic IDE usage tips
 
