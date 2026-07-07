@@ -1,6 +1,7 @@
 ---
 title: Use devcontainers to protect your personal data from coding agents
 publishDate: 2026-07-01
+lastUpdated: 2026-07-07
 ---
 
 Did you know that this phrase in [Cursor's agent security policy](https://cursor.com/docs/agent/security#first-party-tool-calls) doesn't refer to the workspace that's being used but **the whole file system**?
@@ -70,3 +71,10 @@ Simply bump the version in the feature json file as you make changes and then tr
 - If you miss the *Reopen* popup that I mentioned above, there's also a *Reopen in Container* available from the command palette. And in vanilla vscode, you can click the *Connect* button on the very bottom left and pick *Reopen in Container* there.
 - Whenever you change something in your devcontainer config, you have to click the *Connect* button and do *Rebuild container*.
 - While there are those hooks for running commands at different stages, I recommend checking whether features can't do those things first. Like e.g. the [*apt* feature](https://github.com/devcontainers-extra/features/tree/main/src/apt-packages) if you have to install a few libraries to compile something on Linux.
+- Running e.g. playwright headed can be as simple as this, if you use Linux with X11. (You can find info for macOS and Windows [here](https://www.oddbird.net/2022/11/30/headed-playwright-in-docker/). But AI may already know how to do X11 forwarding on your OS.)
+```json
+  "containerEnv": {
+    "DISPLAY": "${localEnv:DISPLAY}"
+  },
+  "mounts": ["source=/tmp/.X11-unix,target=/tmp/.X11-unix,type=bind"],
+```
